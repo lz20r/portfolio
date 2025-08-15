@@ -1,0 +1,233 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+---
+
+<Base
+	title='Registro · Nia Portfolio'
+	description='Regístrate para recibir actualizaciones sobre nuevos proyectos'>
+	<Header />
+
+	<main class='mx-auto max-w-2xl px-4 py-12'>
+		<!-- Navegación de regreso -->
+		<nav class="mb-8">
+			<a
+				href='/'
+				class='inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-colors text-sm font-medium'
+			>
+				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+				</svg>
+				Volver a inicio
+			</a>
+		</nav>
+
+		<!-- Formulario de registro -->
+		<div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12">
+			<div class="text-center mb-8">
+				<h1 class='text-3xl md:text-4xl font-bold mb-4'>
+					<span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+						¡Únete a mi comunidad!
+					</span>
+				</h1>
+				<p class="text-lg text-gray-300">
+					Regístrate para recibir actualizaciones sobre nuevos proyectos, 
+					artículos técnicos y recursos de desarrollo web.
+				</p>
+			</div>
+
+			<form
+				class='space-y-6'
+				onsubmit="handleRegistration(event); return false;"
+			>
+				<!-- Nombre completo -->
+				<div>
+					<label for="fullName" class="block text-sm font-medium mb-2">
+						Nombre completo *
+					</label>
+					<input
+						id="fullName"
+						name='fullName'
+						type="text"
+						placeholder='Tu nombre completo'
+						class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all'
+						required
+					/>
+				</div>
+
+				<!-- Email -->
+				<div>
+					<label for="email" class="block text-sm font-medium mb-2">
+						Correo electrónico *
+					</label>
+					<input
+						id="email"
+						name='email'
+						type='email'
+						placeholder='tu@email.com'
+						class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all'
+						required
+					/>
+				</div>
+
+				<!-- Intereses -->
+				<div>
+					<label class="block text-sm font-medium mb-3">
+						¿Qué te interesa más?
+					</label>
+					<div class="space-y-2">
+						<label class="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
+							<input type="checkbox" name="interests" value="webdev" class="w-4 h-4 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400">
+							<span>Desarrollo Web Frontend</span>
+						</label>
+						<label class="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
+							<input type="checkbox" name="interests" value="backend" class="w-4 h-4 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400">
+							<span>Desarrollo Backend</span>
+						</label>
+						<label class="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
+							<input type="checkbox" name="interests" value="design" class="w-4 h-4 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400">
+							<span>Diseño UI/UX</span>
+						</label>
+						<label class="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
+							<input type="checkbox" name="interests" value="tutorials" class="w-4 h-4 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400">
+							<span>Tutoriales y Recursos</span>
+						</label>
+					</div>
+				</div>
+
+				<!-- Nivel de experiencia -->
+				<div>
+					<label for="experience" class="block text-sm font-medium mb-2">
+						Nivel de experiencia
+					</label>
+					<select
+						id="experience"
+						name="experience"
+						class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all'
+					>
+						<option value="">Selecciona tu nivel</option>
+						<option value="beginner">Principiante</option>
+						<option value="intermediate">Intermedio</option>
+						<option value="advanced">Avanzado</option>
+						<option value="expert">Experto</option>
+					</select>
+				</div>
+
+				<!-- Mensaje opcional -->
+				<div>
+					<label for="message" class="block text-sm font-medium mb-2">
+						Mensaje (opcional)
+					</label>
+					<textarea
+						id="message"
+						name='message'
+						placeholder='Cuéntame un poco sobre ti o qué te gustaría aprender...'
+						rows='4'
+						class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all resize-none'
+					></textarea>
+				</div>
+
+				<!-- Términos y condiciones -->
+				<div>
+					<label class="flex items-start gap-3 cursor-pointer">
+						<input 
+							type="checkbox" 
+							name="terms" 
+							required
+							class="w-4 h-4 mt-1 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400"
+						>
+						<span class="text-sm text-gray-300">
+							Acepto recibir emails ocasionales con actualizaciones y contenido relevante. 
+							Puedes cancelar la suscripción en cualquier momento.
+						</span>
+					</label>
+				</div>
+
+				<!-- Botón de registro -->
+				<button
+					type="submit"
+					class='w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:scale-[1.02] transition-transform shadow-lg hover:shadow-xl'
+				>
+					<span class="flex items-center justify-center gap-2">
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+						</svg>
+						Registrarme
+					</span>
+				</button>
+			</form>
+
+			<!-- Información adicional -->
+			<div class="mt-8 pt-6 border-t border-white/10 text-center">
+				<p class="text-sm text-gray-400 mb-4">
+					Al registrarte recibirás:
+				</p>
+				<div class="grid sm:grid-cols-3 gap-4 text-sm">
+					<div class="flex items-center gap-2 justify-center">
+						<svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+						</svg>
+						<span>Proyectos nuevos</span>
+					</div>
+					<div class="flex items-center gap-2 justify-center">
+						<svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.168 18.477 18.582 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+						</svg>
+						<span>Tutoriales exclusivos</span>
+					</div>
+					<div class="flex items-center gap-2 justify-center">
+						<svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+						</svg>
+						<span>Recursos gratuitos</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mensaje de éxito (inicialmente oculto) -->
+		<div id="successMessage" class="hidden mt-8 bg-gradient-to-r from-green-500/10 to-blue-500/10 backdrop-blur-sm border border-green-400/30 rounded-3xl p-8 text-center">
+			<div class="w-16 h-16 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
+				<svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+				</svg>
+			</div>
+			<h2 class="text-2xl font-bold text-green-400 mb-2">¡Registro exitoso!</h2>
+			<p class="text-gray-300">
+				Gracias por unirte. Pronto recibirás un email de confirmación con contenido exclusivo.
+			</p>
+		</div>
+	</main>
+</Base>
+
+<script>
+	function handleRegistration(event) {
+		event.preventDefault();
+		
+		// Simular procesamiento
+		const submitButton = event.target.querySelector('button[type="submit"]');
+		const originalText = submitButton.innerHTML;
+		
+		submitButton.innerHTML = `
+			<span class="flex items-center justify-center gap-2">
+				<svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+				</svg>
+				Procesando...
+			</span>
+		`;
+		submitButton.disabled = true;
+		
+		// Simular delay de procesamiento
+		setTimeout(() => {
+			// Ocultar formulario y mostrar mensaje de éxito
+			event.target.parentElement.style.display = 'none';
+			document.getElementById('successMessage').classList.remove('hidden');
+			
+			// Scroll suave al mensaje de éxito
+			document.getElementById('successMessage').scrollIntoView({ 
+				behavior: 'smooth' 
+			});
+		}, 2000);
+	}
+</script>
