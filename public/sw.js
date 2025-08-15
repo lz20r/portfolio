@@ -1,10 +1,10 @@
 // Service Worker para notificaciones push
-self.addEventListener('install', function(event) {
+self.addEventListener('install', function (event) {
   console.log('Service Worker instalado');
   self.skipWaiting();
 });
 
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', function (event) {
   console.log('Service Worker activado');
   event.waitUntil(self.clients.claim());
 });
@@ -33,9 +33,9 @@ function showNotification(title, options) {
 }
 
 // Escuchar clics en las notificaciones
-self.addEventListener('notificationclick', function(event) {
+self.addEventListener('notificationclick', function (event) {
   event.notification.close();
-  
+
   if (event.action === 'celebrate') {
     // Abrir la página del portfolio
     event.waitUntil(
@@ -49,7 +49,7 @@ function checkImportantDates() {
   const today = new Date();
   const todayMonth = today.getMonth();
   const todayDay = today.getDate();
-  
+
   // 20 de enero (mes 0)
   if (todayMonth === 0 && todayDay === 20) {
     showNotification('🎂 ¡Feliz Cumpleaños, Naiara! 🎉', {
@@ -57,7 +57,7 @@ function checkImportantDates() {
       tag: 'birthday'
     });
   }
-  
+
   // 2 de septiembre (mes 8)
   if (todayMonth === 8 && todayDay === 2) {
     showNotification('💕 ¡Feliz Aniversario! ❤️', {
@@ -71,6 +71,6 @@ function checkImportantDates() {
 setInterval(checkImportantDates, 60 * 60 * 1000); // Cada hora
 
 // Verificar inmediatamente cuando se active el SW
-self.addEventListener('activate', function(event) {
+self.addEventListener('activate', function (event) {
   checkImportantDates();
 });
