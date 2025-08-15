@@ -14,9 +14,16 @@ const { title = 'Nia · Portfolio', description = 'Portfolio con Astro' } =
 			name='description'
 			content={description}
 		/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
 	</head>
-	<body class='min-h-dvh bg-neutral-950 text-neutral-100 antialiased'>
+	<body class='min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white antialiased'>
+		<!-- Patrón de fondo animado -->
+		<div class="fixed inset-0 -z-10">
+			<div class="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3b82f6,transparent)]"></div>
+			<div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_80%_300px,#8b5cf6,transparent)]"></div>
+		</div>
+		
 		<slot />
 	</body>
 </html>
