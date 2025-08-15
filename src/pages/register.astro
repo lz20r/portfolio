@@ -23,16 +23,16 @@ import Header from '../components/Header.astro';
 		</nav>
 
 		<!-- Formulario de registro -->
-		<div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12">
+		<div class="bg-white/90 border-4 border-blue-400 rounded-sketch-lg p-8 md:p-12 card-sketch shadow-sketch-lg">
 			<div class="text-center mb-8">
-				<h1 class='text-3xl md:text-4xl font-bold mb-4'>
-					<span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-						¡Únete a mi comunidad!
+				<h1 class='text-3xl md:text-4xl font-bold mb-4 font-handwriting'>
+					<span class="text-blue-600 sketch-text doodle-line">
+						🌟 ¡Únete a mi aventura digital!
 					</span>
 				</h1>
-				<p class="text-lg text-gray-300">
-					Regístrate para recibir actualizaciones sobre nuevos proyectos, 
-					artículos técnicos y recursos de desarrollo web.
+				<p class="text-lg text-gray-600">
+					📬 Recibe actualizaciones sobre nuevos proyectos, 
+					artículos técnicos y recursos súper útiles 🎯
 				</p>
 			</div>
 
@@ -42,117 +42,41 @@ import Header from '../components/Header.astro';
 			>
 				<!-- Nombre completo -->
 				<div>
-					<label for="fullName" class="block text-sm font-medium mb-2">
-						Nombre completo *
+					<label for="fullName" class="block text-sm font-bold mb-2 text-gray-700 font-handwriting">
+						✏️ Nombre completo *
 					</label>
 					<input
 						id="fullName"
 						name='fullName'
 						type="text"
 						placeholder='Tu nombre completo'
-						class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all'
+						class='w-full bg-white/80 border-3 border-blue-300 rounded-sketch px-4 py-3 focus:outline-none focus:border-blue-500 focus:bg-white transition-all font-sketch'
 						required
 					/>
 				</div>
 
 				<!-- Email -->
 				<div>
-					<label for="email" class="block text-sm font-medium mb-2">
-						Correo electrónico *
+					<label for="email" class="block text-sm font-bold mb-2 text-gray-700 font-handwriting">
+						📧 Correo electrónico *
 					</label>
 					<input
 						id="email"
 						name='email'
 						type='email'
 						placeholder='tu@email.com'
-						class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all'
+						class='w-full bg-white/80 border-3 border-purple-300 rounded-sketch px-4 py-3 focus:outline-none focus:border-purple-500 focus:bg-white transition-all font-sketch'
 						required
 					/>
-				</div>
-
-				<!-- Intereses -->
-				<div>
-					<label class="block text-sm font-medium mb-3">
-						¿Qué te interesa más?
-					</label>
-					<div class="space-y-2">
-						<label class="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
-							<input type="checkbox" name="interests" value="webdev" class="w-4 h-4 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400">
-							<span>Desarrollo Web Frontend</span>
-						</label>
-						<label class="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
-							<input type="checkbox" name="interests" value="backend" class="w-4 h-4 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400">
-							<span>Desarrollo Backend</span>
-						</label>
-						<label class="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
-							<input type="checkbox" name="interests" value="design" class="w-4 h-4 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400">
-							<span>Diseño UI/UX</span>
-						</label>
-						<label class="flex items-center gap-3 p-3 bg-white/5 rounded-lg hover:bg-white/10 transition-colors cursor-pointer">
-							<input type="checkbox" name="interests" value="tutorials" class="w-4 h-4 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400">
-							<span>Tutoriales y Recursos</span>
-						</label>
-					</div>
-				</div>
-
-				<!-- Nivel de experiencia -->
-				<div>
-					<label for="experience" class="block text-sm font-medium mb-2">
-						Nivel de experiencia
-					</label>
-					<select
-						id="experience"
-						name="experience"
-						class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all'
-					>
-						<option value="">Selecciona tu nivel</option>
-						<option value="beginner">Principiante</option>
-						<option value="intermediate">Intermedio</option>
-						<option value="advanced">Avanzado</option>
-						<option value="expert">Experto</option>
-					</select>
-				</div>
-
-				<!-- Mensaje opcional -->
-				<div>
-					<label for="message" class="block text-sm font-medium mb-2">
-						Mensaje (opcional)
-					</label>
-					<textarea
-						id="message"
-						name='message'
-						placeholder='Cuéntame un poco sobre ti o qué te gustaría aprender...'
-						rows='4'
-						class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all resize-none'
-					></textarea>
-				</div>
-
-				<!-- Términos y condiciones -->
-				<div>
-					<label class="flex items-start gap-3 cursor-pointer">
-						<input 
-							type="checkbox" 
-							name="terms" 
-							required
-							class="w-4 h-4 mt-1 text-blue-500 bg-white/10 border-white/20 rounded focus:ring-blue-400"
-						>
-						<span class="text-sm text-gray-300">
-							Acepto recibir emails ocasionales con actualizaciones y contenido relevante. 
-							Puedes cancelar la suscripción en cualquier momento.
-						</span>
-					</label>
 				</div>
 
 				<!-- Botón de registro -->
 				<button
 					type="submit"
-					class='w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:scale-[1.02] transition-transform shadow-lg hover:shadow-xl'
+					class='w-full px-6 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-sketch font-bold hover:from-blue-500 hover:to-purple-600 transition-all btn-sketch shadow-sketch-colored text-lg'
 				>
 					<span class="flex items-center justify-center gap-2">
-						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-						</svg>
-						Registrarme
+						🚀 ¡Quiero formar parte!
 					</span>
 				</button>
 			</form>
