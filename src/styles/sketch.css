@@ -1,11 +1,42 @@
 /* Estilos sketch personalizados */
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Caveat:wght@400;600;700&display=swap');
 
+/* Variables de color para modo claro y oscuro */
+:root {
+  /* Modo claro */
+  --bg-primary: rgb(239 246 255); /* blue-50 */
+  --bg-secondary: rgb(250 245 255); /* purple-50 */
+  --bg-tertiary: rgb(253 242 248); /* pink-50 */
+  --text-primary: rgb(31 41 55); /* gray-800 */
+  --text-secondary: rgb(75 85 99); /* gray-600 */
+  --accent-primary: rgb(59 130 246); /* blue-500 */
+  --accent-secondary: rgb(147 51 234); /* purple-600 */
+  --paper-dots: rgba(255, 255, 255, 0.1);
+  --paper-dots-small: rgba(255, 255, 255, 0.05);
+  --grid-lines: rgba(59, 130, 246, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+  /* Modo oscuro - NEGRO TOTAL */
+  --bg-primary: #000000; /* Negro absoluto */
+  --bg-secondary: #111111; /* Negro muy oscuro */
+  --bg-tertiary: #222222; /* Negro carbón */
+  --text-primary: #ffffff; /* Blanco puro */
+  --text-secondary: #cccccc; /* Gris claro */
+  --accent-primary: #4285f4; /* Azul Google elegante */
+  --accent-secondary: #9c27b0; /* Púrpura material */
+  --paper-dots: rgba(255, 255, 255, 0.03);
+  --paper-dots-small: rgba(255, 255, 255, 0.01);
+  --grid-lines: rgba(66, 133, 244, 0.1);
+  --shadow-color: rgba(66, 133, 244, 0.3);
+}
+
 /* Efectos de fondo tipo papel */
 .paper-texture {
   background-image: 
-    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
-    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    radial-gradient(circle at 25% 25%, var(--paper-dots) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, var(--paper-dots-small) 1px, transparent 1px);
   background-size: 50px 50px, 30px 30px;
 }
 
@@ -122,6 +153,145 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0,10 Q25,5 50,10 T100,10' stroke='rgba(59,130,246,0.5)' stroke-width='2' fill='none'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   background-position: bottom;
+}
+
+/* Toggle de modo oscuro */
+.theme-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  border-radius: 20px 25px 15px 30px / 25px 15px 30px 20px;
+  background: var(--accent-primary);
+  border: 2px solid var(--text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform: rotate(-1deg);
+  box-shadow: 0 0 10px var(--accent-primary)/50;
+}
+
+.theme-toggle:hover {
+  transform: rotate(1deg) scale(1.05);
+  box-shadow: 0 0 20px var(--accent-primary)/70;
+}
+
+.theme-toggle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--text-primary);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translateX(0);
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  box-shadow: 0 0 15px var(--accent-primary)/60, 0 0 30px var(--accent-secondary)/40;
+}
+
+[data-theme="dark"] .theme-toggle::before {
+  transform: translateX(26px);
+  background: rgb(20 20 20);
+  box-shadow: 0 0 10px var(--accent-primary)/50;
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  z-index: 10;
+}
+
+.theme-toggle-icon.sun {
+  left: 6px;
+  opacity: 1;
+}
+
+.theme-toggle-icon.moon {
+  right: 6px;
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .theme-toggle-icon.sun {
+  opacity: 0.6;
+}
+
+[data-theme="dark"] .theme-toggle-icon.moon {
+  opacity: 1;
+}
+
+/* Efectos neón para modo oscuro */
+[data-theme="dark"] .sketch-text::after {
+  box-shadow: 0 0 5px var(--accent-primary);
+}
+
+[data-theme="dark"] .btn-sketch {
+  box-shadow: 0 0 10px var(--accent-primary)/30;
+}
+
+[data-theme="dark"] .btn-sketch:hover {
+  box-shadow: 0 0 20px var(--accent-primary)/60, 0 0 30px var(--accent-secondary)/40;
+}
+
+[data-theme="dark"] .card-sketch {
+  box-shadow: 0 0 15px var(--accent-primary)/20;
+  border: 1px solid var(--accent-primary)/30;
+}
+
+[data-theme="dark"] .card-sketch:hover {
+  box-shadow: 0 0 25px var(--accent-primary)/40, 0 0 40px var(--accent-secondary)/30;
+  border-color: var(--accent-primary)/60;
+}
+
+[data-theme="dark"] .hand-drawn::before {
+  box-shadow: 0 0 8px var(--accent-primary)/40;
+}
+
+/* Efectos especiales para modo oscuro */
+[data-theme="dark"] body {
+  background: #000000 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .paper-texture {
+  background: #000000 !important;
+  background-image: 
+    radial-gradient(circle at 25% 25%, #4285f4 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, #9c27b0 0.5px, transparent 0.5px) !important;
+  background-size: 80px 80px, 60px 60px !important;
+}
+
+[data-theme="dark"] header {
+  background: #000000 !important;
+  border-color: #4285f4 !important;
+}
+
+[data-theme="dark"] nav a {
+  color: #ffffff !important;
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: #4285f4 !important;
+  border-color: #ffffff !important;
+}
+
+/* Animación de pulso neón */
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow: 0 0 5px var(--accent-primary), 0 0 10px var(--accent-primary), 0 0 15px var(--accent-primary);
+  }
+  50% {
+    text-shadow: 0 0 2px var(--accent-primary), 0 0 5px var(--accent-primary), 0 0 8px var(--accent-primary);
+  }
+}
+
+[data-theme="dark"] .sketch-text {
+  animation: neon-pulse 2s ease-in-out infinite;
 }
 
 /* Animaciones sketch */
