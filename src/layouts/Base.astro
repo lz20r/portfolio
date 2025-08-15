@@ -1,6 +1,7 @@
 ---
 const { title = 'Nia · Portfolio', description = 'Portfolio con Astro' } =
 	Astro.props;
+import '../styles/sketch.css';
 ---
 
 <html lang='es'>
@@ -14,14 +15,14 @@ const { title = 'Nia · Portfolio', description = 'Portfolio con Astro' } =
 			name='description'
 			content={description}
 		/>
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/sketch-logo.svg" />
 		<title>{title}</title>
 	</head>
-	<body class='min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white antialiased'>
-		<!-- Patrón de fondo animado -->
+	<body class='min-h-screen font-sketch bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-gray-800 antialiased paper-texture'>
+		<!-- Patrón de fondo tipo cuaderno -->
 		<div class="fixed inset-0 -z-10">
-			<div class="absolute inset-0 bg-[radial-gradient(circle_500px_at_50%_200px,#3b82f6,transparent)]"></div>
-			<div class="absolute inset-0 bg-[radial-gradient(circle_800px_at_80%_300px,#8b5cf6,transparent)]"></div>
+			<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
+			<div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(59,130,246,0.1) 24px, rgba(59,130,246,0.1) 25px); opacity: 0.3;"></div>
 		</div>
 		
 		<slot />
