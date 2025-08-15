@@ -1,5 +1,5 @@
 ---
-const { title = 'Nia · Portfolio', description = 'Portfolio con Astro' } =
+const { title = 'Mi Portfolio · Developer', description = 'Portfolio de desarrollador con proyectos increíbles' } =
 	Astro.props;
 import '../styles/sketch.css';
 ---
@@ -17,14 +17,68 @@ import '../styles/sketch.css';
 		/>
 		<link rel="icon" type="image/svg+xml" href="/sketch-logo.svg" />
 		<title>{title}</title>
+		<script>
+			// Inicializar tema desde localStorage o sistema
+			function initTheme() {
+				const savedTheme = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+				document.documentElement.setAttribute('data-theme', theme);
+			}
+			
+			// Ejecutar antes de que se renderice la página para evitar flash
+			initTheme();
+		</script>
 	</head>
-	<body class='min-h-screen font-sketch bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 text-gray-800 antialiased paper-texture'>
+	<body class='min-h-screen font-sketch antialiased paper-texture transition-all duration-500'>
+		<style>
+			body {
+				background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary), var(--bg-tertiary));
+				color: var(--text-primary);
+			}
+			
+			/* Forzar fondo negro total en modo oscuro */
+			[data-theme="dark"] body {
+				background: #000000 !important;
+				color: #ffffff !important;
+			}
+			
+			[data-theme="dark"] * {
+				color: inherit;
+			}
+			
+			/* Asegurar que TODO sea negro en modo oscuro */
+			[data-theme="dark"] html {
+				background: #000000 !important;
+			}
+			
+			[data-theme="dark"] main {
+				background: transparent !important;
+			}
+			
+			[data-theme="dark"] section {
+				background: transparent !important;
+			}
+		</style>
+		
 		<!-- Patrón de fondo tipo cuaderno -->
 		<div class="fixed inset-0 -z-10">
-			<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-			<div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(59,130,246,0.1) 24px, rgba(59,130,246,0.1) 25px); opacity: 0.3;"></div>
+			<div class="absolute inset-0" style="background-image: radial-gradient(circle_at_50%_50%, var(--accent-primary), transparent 50%); opacity: 0.1;"></div>
+			<div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 24px, var(--grid-lines) 24px, var(--grid-lines) 25px); opacity: 0.3;"></div>
+			<!-- Efectos neón adicionales para modo oscuro -->
+			<div class="absolute inset-0" style="background-image: radial-gradient(circle at 25% 25%, var(--accent-primary), transparent 70%), radial-gradient(circle at 75% 75%, var(--accent-secondary), transparent 70%); opacity: 0.03;"></div>
 		</div>
 		
 		<slot />
+		
+		<script>
+			// Función para cambiar tema
+			window.toggleTheme = function() {
+				const currentTheme = document.documentElement.getAttribute('data-theme');
+				const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+				document.documentElement.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+			}
+		</script>
 	</body>
 </html>
