@@ -626,7 +626,8 @@ function getDaysUntil(targetDate: Date) {
 	}
 
 	function triggerSpecialDayNotification(month, day) {
-		let title, body;
+		let title = '';
+		let body = '';
 		
 		if (month === 0 && day === 20) {
 			title = '🎂 ¡Feliz Cumpleaños, Naiara! 🎉';
@@ -636,11 +637,12 @@ function getDaysUntil(targetDate: Date) {
 			body = '¡Hoy celebramos vuestro aniversario! Un día muy especial.';
 		}
 		
-		new Notification(title, {
-			body: body,
-			icon: '/favicon.svg',
-			vibrate: [100, 50, 100]
-		});
+		if (title && body) {
+			new Notification(title, {
+				body: body,
+				icon: '/favicon.svg'
+			});
+		}
 	}
 
 	function scheduleDailyChecks() {
