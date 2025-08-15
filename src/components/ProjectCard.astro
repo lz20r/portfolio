@@ -1,71 +1,58 @@
 ---
 import type { Project } from '../data/projects';
-const { p } = Astro.props as { p: Project };
+const { p }: { p: Project } = Astro.props;
 ---
 
-<article class='group card-sketch'>
+<article class="group card-sketch">
 	<a
 		href={`/projects/${p.slug}`}
 		class='block backdrop-blur-sm border-2 rounded-sketch-lg p-6 transition-all duration-300 hand-drawn bg-white/80 hover:bg-white/90'
-		style='border-color: var(--accent-primary);'>
+		style="border-color: var(--accent-primary);"
+		>
+		
 		<!-- Badge de proyecto destacado -->
-		{
-			p.featured && (
-				<div class='flex items-center gap-2 mb-4'>
-					<span class='inline-flex items-center px-3 py-1 rounded-sketch bg-yellow-200 border-2 border-yellow-400 text-yellow-800 text-xs font-bold btn-sketch'>
-						⭐ ¡Destacado!
-					</span>
-				</div>
-			)
-		}
-
-		<h4
-			class='text-xl font-bold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors sketch-text font-handwriting'>
+		{p.featured && (
+			<div class="flex items-center gap-2 mb-4">
+				<span class="inline-flex items-center px-3 py-1 rounded-sketch bg-yellow-200 border-2 border-yellow-400 text-yellow-800 text-xs font-bold btn-sketch">
+					⭐ ¡Destacado!
+				</span>
+			</div>
+		)}
+		
+		<h4 class='text-xl font-bold mb-3 text-gray-800 group-hover:text-blue-600 transition-colors sketch-text font-handwriting'>
 			{p.title}
 		</h4>
-
-		{
-			p.description && (
-				<p class='text-gray-600 leading-relaxed mb-4 line-clamp-3'>
-					{p.description}
-				</p>
-			)
-		}
-
-		{
-			p.tags && (
-				<div class='flex flex-wrap gap-2 mb-4'>
-					{p.tags.map((tag) => (
-						<span class='px-3 py-1 text-xs font-medium bg-blue-100 border border-blue-300 rounded-sketch text-blue-700 hover:bg-blue-200 transition-colors btn-sketch'>
-							🏷️ {tag}
-						</span>
-					))}
-				</div>
-			)
-		}
-
-		<!-- Enlaces del proyecto -->
-		<div
-			class='flex items-center justify-between mt-4 pt-4 border-t-2 border-dashed border-gray-300'>
-			<div class='flex gap-3'>
-				{
-					p.url && (
-						<span class='inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 transition-colors font-medium'>
-							🌐 Demo
-						</span>
-					)
-				}
-				{
-					p.github && (
-						<span class='inline-flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 transition-colors font-medium'>
-							💻 Código
-						</span>
-					)
-				}
+		
+		{p.description && (
+			<p class='text-gray-600 leading-relaxed mb-4 line-clamp-3'>{p.description}</p>
+		)}
+		
+		{p.tags && (
+			<div class='flex flex-wrap gap-2 mb-4'>
+				{p.tags.map((tag) => (
+					<span class='px-3 py-1 text-xs font-medium bg-blue-100 border border-blue-300 rounded-sketch text-blue-700 hover:bg-blue-200 transition-colors btn-sketch'>
+						🏷️ {tag}
+					</span>
+				))}
 			</div>
-
-			<div
-				class='text-2xl group-hover:translate-x-2 transition-transform'>
+		)}
+		
+		<!-- Enlaces del proyecto -->
+		<div class="flex items-center justify-between mt-4 pt-4 border-t-2 border-dashed border-gray-300">
+			<div class="flex gap-3">
+				{p.url && (
+					<span class="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 transition-colors font-medium">
+						🌐 Demo
+					</span>
+				)}
+				{p.github && (
+					<span class="inline-flex items-center gap-1 text-sm text-gray-600 hover:text-gray-800 transition-colors font-medium">
+						💻 Código
+					</span>
+				)}
+			</div>
+			
+			<div class="text-2xl group-hover:translate-x-2 transition-transform">
 				➡️
 			</div>
 		</div>
@@ -73,21 +60,21 @@ const { p } = Astro.props as { p: Project };
 </article>
 
 <style>
-	[data-theme='dark'] .card-sketch a {
+	[data-theme="dark"] .card-sketch a {
 		background: #111111 !important;
 		border-color: #4285f4 !important;
 		color: #ffffff !important;
 	}
-
-	[data-theme='dark'] .card-sketch h4 {
+	
+	[data-theme="dark"] .card-sketch h4 {
 		color: #4285f4 !important;
 	}
-
-	[data-theme='dark'] .card-sketch p {
+	
+	[data-theme="dark"] .card-sketch p {
 		color: #cccccc !important;
 	}
-
-	[data-theme='dark'] .card-sketch span {
+	
+	[data-theme="dark"] .card-sketch span {
 		background: #222222 !important;
 		border-color: #4285f4 !important;
 		color: #4285f4 !important;
