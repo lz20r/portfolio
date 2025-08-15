@@ -5,234 +5,293 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
 
 const featured = projects.find((p) => p.featured);
-
-// Fechas importantes - puedes cambiar estas fechas
-const importantDates = [
-  {
-    name: "Mi Cumpleaños 🎂",
-    date: new Date(new Date().getFullYear(), 0, 20), // 20 de enero
-    emoji: "🎉",
-    color: "from-pink-400 to-purple-500"
-  },
-  {
-    name: "Nuestro Aniversario 💕",
-    date: new Date(new Date().getFullYear(), 8, 2), // 2 de septiembre
-    emoji: "❤️",
-    color: "from-red-400 to-pink-500"
-  }
-];
-
-// Función para calcular días restantes
-function getDaysUntil(targetDate: Date) {
-  const today = new Date();
-  const currentYear = today.getFullYear();
-  
-  // Ajustar el año si la fecha ya pasó este año
-  let nextDate = new Date(targetDate);
-  nextDate.setFullYear(currentYear);
-  
-  if (nextDate < today) {
-    nextDate.setFullYear(currentYear + 1);
-  }
-  
-  const timeDiff = nextDate.getTime() - today.getTime();
-  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-  
-  return {
-    days: daysDiff,
-    nextDate: nextDate
-  };
-}
 ---
 
 <Base
-	title='Inicio · Nia Portfolio'
-	description='Portafolio hecho con Astro'>
+	title='Naiara Zhiyao · Portfolio'
+	description='Desarrolladora graduada en DAM y DAW, especializada en desarrollo web y aplicaciones. Creadora de Cinammon.net'>
 	<Header />
 
 	<main class='mx-auto max-w-6xl px-4'>
 		<!-- Hero Section -->
 		<section class='py-20 md:py-32 text-center'>
-			<div class="relative sketch-in">
+			<div class='relative sketch-in'>
 				<!-- Avatar/Imagen de perfil -->
-				<div class="w-32 h-32 mx-auto mb-8 rounded-sketch bg-gradient-to-br from-blue-200 to-purple-300 p-2 border-4 border-blue-400 shadow-sketch card-sketch">
-					<div class="w-full h-full bg-white/50 rounded-sketch flex items-center justify-center backdrop-blur-sm">
-						<span class="text-4xl font-bold text-blue-600">🎨</span>
+				<div
+					class='w-32 h-32 mx-auto mb-8 rounded-sketch p-2 border-4 shadow-sketch card-sketch'
+					style='background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); border-color: var(--accent-primary); box-shadow: 0 0 30px var(--accent-primary)/40;'>
+					<div
+						class='w-full h-full backdrop-blur-sm rounded-sketch flex items-center justify-center'
+						style='background: var(--bg-primary)/50;'>
+						<span
+							class='text-4xl font-bold'
+							style='color: var(--accent-primary); text-shadow: 0 0 15px var(--accent-primary)/60;'
+							>💻</span
+						>
 					</div>
 				</div>
-				
-				<h1 class='text-5xl md:text-7xl font-bold mb-6 font-handwriting'>
-					<span class="text-blue-600 sketch-text doodle-line">
-						¡Hola, soy Nia! 👋
+
+				<h1
+					class='text-5xl md:text-7xl font-bold mb-6 font-handwriting'>
+					<span
+						class='sketch-text doodle-line'
+						style='color: var(--accent-primary); text-shadow: 0 0 20px var(--accent-primary)/50;'>
+						¡Hola! Soy Naiara 👋
 					</span>
 				</h1>
-				
-				<p class='text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed font-sketch'>
-					� Graduada en DAM/DAW y estudiante de Arte Digital. 
-					Creadora de Cinammon.net - fusiono programación con creatividad. ✨
+
+				<p
+					class='text-xl md:text-2xl max-w-3xl mx-auto mb-8 leading-relaxed font-sketch'
+					style='color: var(--text-secondary);'>
+					🎓 Graduada en DAM y DAW, actualmente estudiando Arte
+					Digital. Creadora de <strong>Cinammon.net</strong> y apasionada
+					por el desarrollo web. ⚡
 				</p>
-				
+
 				<!-- CTA Buttons -->
-				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-					<a href="#projects" 
-						class="px-8 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-sketch font-bold hover:from-blue-500 hover:to-purple-600 transition-all btn-sketch shadow-sketch-colored">
+				<div
+					class='flex flex-col sm:flex-row gap-4 justify-center items-center mb-12'>
+					<a
+						href='#projects'
+						class='px-8 py-4 text-white rounded-sketch font-bold transition-all btn-sketch shadow-sketch-colored'
+						style='background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); box-shadow: 0 0 20px var(--accent-primary)/50;'
+						onmouseover="this.style.boxShadow='0 0 30px var(--accent-primary)/70, 0 0 50px var(--accent-secondary)/40';"
+						onmouseout="this.style.boxShadow='0 0 20px var(--accent-primary)/50';">
 						📁 Ver mis creaciones
 					</a>
-					<a href="#contact" 
-						class="px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-green-300 rounded-sketch font-bold hover:bg-green-100 hover:border-green-400 transition-colors btn-sketch text-gray-700">
+					<a
+						href='#contact'
+						class='px-8 py-4 backdrop-blur-sm border-2 rounded-sketch font-bold transition-colors btn-sketch'
+						style='background: var(--bg-primary)/80; border-color: var(--accent-secondary); color: var(--text-primary); box-shadow: 0 0 10px var(--accent-secondary)/30;'
+						onmouseover="this.style.borderColor='var(--accent-primary)'; this.style.boxShadow='0 0 20px var(--accent-primary)/50';"
+						onmouseout="this.style.borderColor='var(--accent-secondary)'; this.style.boxShadow='0 0 10px var(--accent-secondary)/30';">
 						💬 ¡Charlemos!
 					</a>
 				</div>
-				
+
 				<!-- Tecnologías -->
-				<div class="flex flex-wrap justify-center gap-3 text-sm">
-					<span class="px-4 py-2 bg-blue-100 border-2 border-blue-300 rounded-sketch btn-sketch marker-highlight">⚛️ React</span>
-					<span class="px-4 py-2 bg-purple-100 border-2 border-purple-300 rounded-sketch btn-sketch">📝 TypeScript</span>
-					<span class="px-4 py-2 bg-pink-100 border-2 border-pink-300 rounded-sketch btn-sketch">🚀 Astro</span>
-					<span class="px-4 py-2 bg-green-100 border-2 border-green-300 rounded-sketch btn-sketch">🎨 Tailwind</span>
-					<span class="px-4 py-2 bg-yellow-100 border-2 border-yellow-300 rounded-sketch btn-sketch">📦 Node.js</span>
+				<div class='flex flex-wrap justify-center gap-3 text-sm'>
+					<span
+						class='px-4 py-2 bg-blue-100 border-2 border-blue-300 rounded-sketch btn-sketch marker-highlight'
+						>🌐 HTML/CSS</span
+					>
+					<span
+						class='px-4 py-2 bg-purple-100 border-2 border-purple-300 rounded-sketch btn-sketch'
+						>⚡ JavaScript</span
+					>
+					<span
+						class='px-4 py-2 bg-green-100 border-2 border-green-300 rounded-sketch btn-sketch'
+						>� Python</span
+					>
+					<span
+						class='px-4 py-2 bg-yellow-100 border-2 border-yellow-300 rounded-sketch btn-sketch'
+						>☕ Java</span
+					>
+					<span
+						class='px-4 py-2 bg-red-100 border-2 border-red-300 rounded-sketch btn-sketch'
+						>🎨 Arte Digital</span
+					>
+					<span
+						class='px-4 py-2 bg-indigo-100 border-2 border-indigo-300 rounded-sketch btn-sketch'
+						>� Apps Móviles</span
+					>
 				</div>
 			</div>
 		</section>
 
 		<!-- Proyecto Destacado -->
-		{featured && (
-			<section class='py-16'>
-				<div class='bg-yellow-50/80 border-4 border-yellow-400 rounded-sketch-lg p-8 md:p-12 card-sketch shadow-sketch-lg'>
-					<div class="flex items-center gap-3 mb-6">
-						<span class="text-3xl">⭐</span>
-						<span class='text-lg font-bold text-yellow-700 font-handwriting'>¡Mi obra maestra!</span>
-					</div>
-					
-					<h2 class='text-3xl md:text-4xl font-bold mb-4 text-gray-800 sketch-text font-handwriting'>{featured.title}</h2>
-					
-					{featured.description && (
-						<p class='text-lg text-gray-600 mb-6 leading-relaxed'>
-							{featured.description}
-						</p>
-					)}
-					
-					{featured.tags && (
-						<div class='flex flex-wrap gap-2 mb-6'>
-							{featured.tags.map((tag) => (
-								<span class='px-3 py-1 text-sm bg-white/80 border-2 border-blue-300 rounded-sketch text-blue-700 btn-sketch font-medium'>
-									🏷️ {tag}
-								</span>
-							))}
+		{
+			featured && (
+				<section class='py-16'>
+					<div class='bg-yellow-50/80 border-4 border-yellow-400 rounded-sketch-lg p-8 md:p-12 card-sketch shadow-sketch-lg'>
+						<div class='flex items-center gap-3 mb-6'>
+							<span class='text-3xl'>⭐</span>
+							<span class='text-lg font-bold text-yellow-700 font-handwriting'>
+								¡Mi obra maestra!
+							</span>
 						</div>
-					)}
-					
-					<div class='flex flex-wrap gap-4'>
-						{featured.url && (
-							<a
-								class='inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white font-bold rounded-sketch hover:bg-blue-600 transition-colors btn-sketch shadow-sketch'
-								href={featured.url}
-								target='_blank'>
-								🌐 Ver en vivo
-							</a>
+
+						<h2 class='text-3xl md:text-4xl font-bold mb-4 text-gray-800 sketch-text font-handwriting'>
+							{featured.title}
+						</h2>
+
+						{featured.description && (
+							<p class='text-lg text-gray-600 mb-6 leading-relaxed'>
+								{featured.description}
+							</p>
 						)}
-						{featured.github && (
-							<a
-								class='inline-flex items-center gap-2 px-6 py-3 bg-white/80 border-2 border-gray-400 rounded-sketch hover:bg-gray-100 hover:border-gray-500 transition-colors btn-sketch text-gray-700 font-bold'
-								href={featured.github}
-								target='_blank'>
-								💻 Ver código
-							</a>
+
+						{featured.tags && (
+							<div class='flex flex-wrap gap-2 mb-6'>
+								{featured.tags.map((tag) => (
+									<span class='px-3 py-1 text-sm bg-white/80 border-2 border-blue-300 rounded-sketch text-blue-700 btn-sketch font-medium'>
+										🏷️ {tag}
+									</span>
+								))}
+							</div>
 						)}
+
+						<div class='flex flex-wrap gap-4'>
+							{featured.url && (
+								<a
+									class='inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white font-bold rounded-sketch hover:bg-blue-600 transition-colors btn-sketch shadow-sketch'
+									href={featured.url}
+									target='_blank'>
+									🌐 Ver en vivo
+								</a>
+							)}
+							{featured.github && (
+								<a
+									class='inline-flex items-center gap-2 px-6 py-3 bg-white/80 border-2 border-gray-400 rounded-sketch hover:bg-gray-100 hover:border-gray-500 transition-colors btn-sketch text-gray-700 font-bold'
+									href={featured.github}
+									target='_blank'>
+									💻 Ver código
+								</a>
+							)}
+						</div>
 					</div>
-				</div>
-			</section>
-		)}
+				</section>
+			)
+		}
 
 		<!-- Sección de Proyectos -->
-		<section id='projects' class='py-20'>
-			<div class="text-center mb-12">
-				<h3 class='text-3xl md:text-4xl font-bold mb-4 font-handwriting'>
-					<span class="text-blue-600 sketch-text doodle-line">
+		<section
+			id='projects'
+			class='py-20'>
+			<div class='text-center mb-12'>
+				<h3
+					class='text-3xl md:text-4xl font-bold mb-4 font-handwriting'>
+					<span class='text-blue-600 sketch-text doodle-line'>
 						🚀 Mi portafolio de proyectos
 					</span>
 				</h3>
-				<p class="text-lg text-gray-600">Una colección de mis aventuras digitales 🎨</p>
+				<p class='text-lg text-gray-600'
+					>Una colección de mis aventuras digitales 🎨</p
+				>
 			</div>
-			
+
 			<div class='grid gap-8 md:grid-cols-2 lg:grid-cols-2'>
 				{projects.map((p) => <ProjectCard p={p} />)}
 			</div>
 		</section>
 
 		<!-- Sección Sobre mí -->
-		<section id='about' class='py-20'>
-			<div class="grid md:grid-cols-2 gap-12 items-center">
-				<div class="card-sketch">
-					<div class="bg-white/80 border-4 border-purple-300 rounded-sketch-lg p-8 shadow-sketch">
-						<h3 class='text-3xl md:text-4xl font-bold mb-6 font-handwriting'>
-							<span class="text-purple-600 sketch-text">
-								👋 ¡Hola! Soy yo
+		<section
+			id='about'
+			class='py-20'>
+			<div class='grid md:grid-cols-2 gap-12 items-center'>
+				<div class='card-sketch'>
+					<div
+						class='bg-white/80 border-4 border-purple-300 rounded-sketch-lg p-8 shadow-sketch'>
+						<h3
+							class='text-3xl md:text-4xl font-bold mb-6 font-handwriting'>
+							<span class='text-purple-600 sketch-text'>
+								Sobre Naiara Zhiyao
 							</span>
 						</h3>
-						<div class="space-y-4 text-lg text-gray-600 leading-relaxed">
+						<div
+							class='space-y-4 text-lg text-gray-600 leading-relaxed'>
 							<p>
-								🌟 Soy una desarrolladora web que cree que el código puede ser arte y el arte puede ser código. 
-								Mi misión: transformar ☕ café en aplicaciones increíbles.
+								👋 Soy <strong>Naiara Zhiyao</strong>, graduada
+								en <strong>DAM y DAW</strong>, actualmente
+								estudiando <strong>Arte Digital</strong>. Mi
+								proyecto principal es <strong
+									><a
+										href='https://cinammon.net'
+										target='_blank'
+										class='text-blue-600 hover:underline'
+										>Cinammon.net</a
+									></strong
+								>.
 							</p>
 							<p>
-								📚 Siempre estoy aprendiendo algo nuevo porque la tecnología nunca duerme 
-								(¡y yo tampoco cuando hay un bug interesante que resolver! 🐛).
-							</p>
-							<p>
-								🎯 Mi superpoder: convertir ideas locas en realidades digitales funcionales. 
-								¿Tu proyecto imposible? ¡Para mí es solo otro martes emocionante! 
+								<strong
+									><a
+										href='mailto:contact@zhiyao.dev'
+										class='text-blue-600 hover:underline'
+										>contact@zhiyao.dev</a
+									></strong
+								>
+								| 🐙 <strong
+									><a
+										href='https://github.com/lz20r'
+										target='_blank'
+										class='text-blue-600 hover:underline'
+										>@lz20r</a
+									></strong
+								>
 							</p>
 						</div>
-						
+
 						<!-- Habilidades con barras sketch -->
-						<div class="mt-8">
-							<h4 class="text-xl font-bold mb-4 text-gray-700 font-handwriting">🛠️ Mi caja de herramientas</h4>
-							<div class="space-y-4">
+						<div class='mt-8'>
+							<h4 class='text-xl font-bold mb-4 text-gray-700 font-handwriting'>
+								Habilidades Técnicas
+							</h4>
+							<div class='space-y-4'>
 								<div>
-									<div class="flex justify-between items-center mb-2">
-										<span class="text-sm font-medium text-gray-600">🎨 Frontend Magic</span>
-										<span class="text-sm text-gray-500">90% ⭐</span>
+									<div
+										class='flex justify-between items-center mb-2'>
+										<span
+											class='text-sm font-medium text-gray-600'
+											>Frontend & UI</span
+										>
+										<span class='text-sm text-gray-500'
+											>99% ⭐</span
+										>
 									</div>
-									<div class="w-full bg-gray-200 rounded-sketch h-3 border-2 border-blue-300">
-										<div class="bg-gradient-to-r from-blue-400 to-blue-600 h-full rounded-sketch border border-blue-500" style="width: 90%"></div>
+									<div
+										class='w-full bg-gray-200 rounded-sketch h-3 border-2 border-blue-300'>
+										<div
+											class='bg-gradient-to-r from-blue-400 to-blue-600 h-full rounded-sketch border border-blue-500'
+											style='width: 99%'
+										></div>
 									</div>
 								</div>
 								<div>
-									<div class="flex justify-between items-center mb-2">
-										<span class="text-sm font-medium text-gray-600">⚙️ Backend Wizardry</span>
-										<span class="text-sm text-gray-500">75% ⭐</span>
+									<div
+										class='flex justify-between items-center mb-2'>
+										<span
+											class='text-sm font-medium text-gray-600'
+											>Backend & APIs</span
+										>
+										<span class='text-sm text-gray-500'
+											>85% ⭐</span
+										>
 									</div>
-									<div class="w-full bg-gray-200 rounded-sketch h-3 border-2 border-purple-300">
-										<div class="bg-gradient-to-r from-purple-400 to-purple-600 h-full rounded-sketch border border-purple-500" style="width: 75%"></div>
-									</div>
-								</div>
-								<div>
-									<div class="flex justify-between items-center mb-2">
-										<span class="text-sm font-medium text-gray-600">🎭 UI/UX Artistry</span>
-										<span class="text-sm text-gray-500">85% ⭐</span>
-									</div>
-									<div class="w-full bg-gray-200 rounded-sketch h-3 border-2 border-pink-300">
-										<div class="bg-gradient-to-r from-pink-400 to-pink-600 h-full rounded-sketch border border-pink-500" style="width: 85%"></div>
+									<div
+										class='w-full bg-gray-200 rounded-sketch h-3 border-2 border-purple-300'>
+										<div
+											class='bg-gradient-to-r from-purple-400 to-purple-600 h-full rounded-sketch border border-purple-500'
+											style='width: 85%'
+										></div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-				<div class="relative">
-					<div class="bg-gradient-to-br from-green-100 to-blue-100 border-4 border-green-400 rounded-sketch-lg p-8 flex items-center justify-center card-sketch shadow-sketch-lg min-h-[400px]">
-						<div class="text-center">
-							<div class="text-8xl mb-6">👩‍💻</div>
-							<p class="text-2xl font-bold text-gray-700 font-handwriting mb-2">¡Creando magia digital!</p>
-							<p class="text-lg text-gray-600">Una línea de código a la vez ✨</p>
-							
+
+				<div class='relative'>
+					<div
+						class='bg-gradient-to-br from-green-100 to-blue-100 border-4 border-green-400 rounded-sketch-lg p-8 flex items-center justify-center card-sketch shadow-sketch-lg min-h-[400px]'>
+						<div class='text-center'>
+							<div class='text-8xl mb-6'>🧑‍💻</div>
+							<p
+								class='text-2xl font-bold text-gray-700 font-handwriting mb-2'
+								>Construyendo el futuro digital</p
+							>
+							<p class='text-lg text-gray-600'
+								>Una línea de código a la vez ⚡</p
+							>
+
 							<!-- Elementos decorativos -->
-							<div class="mt-6 flex justify-center space-x-4">
-								<span class="text-3xl animate-bounce">🚀</span>
-								<span class="text-3xl animate-bounce-slow">💡</span>
-								<span class="text-3xl animate-bounce">🎨</span>
+							<div class='mt-6 flex justify-center space-x-4'>
+								<span class='text-3xl animate-bounce'>🚀</span>
+								<span class='text-3xl animate-bounce-slow'
+									>💡</span
+								>
+								<span class='text-3xl animate-bounce'>🎨</span>
 							</div>
 						</div>
 					</div>
@@ -240,92 +299,522 @@ function getDaysUntil(targetDate: Date) {
 			</div>
 		</section>
 
-		<!-- Sección de Cuenta Atrás -->
-		<section class='py-20'>
-			<div class="text-center mb-12">
-				<h3 class='text-3xl md:text-4xl font-bold mb-4 font-handwriting'>
-					<span class="text-purple-600 sketch-text doodle-line">
-						⏰ Fechas Especiales
+		<!-- Sección de Habilidades Técnicas -->
+		<section
+			id='skills'
+			class='py-20'>
+			<div class='text-center mb-12'>
+				<h3
+					class='text-3xl md:text-4xl font-bold mb-4 font-handwriting'>
+					<span class='text-purple-600 sketch-text doodle-line'>
+						💪 Mis Habilidades Técnicas
 					</span>
 				</h3>
-				<p class="text-lg text-gray-600">¡Días importantes que se acercan! 🗓️</p>
+				<p class='text-lg text-gray-600'
+					>Tecnologías y herramientas que domino 🚀</p
+				>
 			</div>
-			
-			<div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-				{importantDates.map((event) => {
-					const countdown = getDaysUntil(event.date);
-					return (
-						<div class="card-sketch">
-							<div class={`bg-gradient-to-br ${event.color} p-6 rounded-sketch-lg shadow-sketch text-white relative overflow-hidden`}>
-								<!-- Decoración de fondo -->
-								<div class="absolute top-0 right-0 text-6xl opacity-20 transform rotate-12">
-									{event.emoji}
+
+			<div class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+				<!-- Lenguajes de Programación -->
+				<div class='card-sketch'>
+					<div
+						class='bg-white/90 dark:bg-gray-800/90 border-4 border-blue-300 dark:border-blue-600 rounded-sketch-lg p-6 shadow-sketch'>
+						<div class='text-center mb-6'>
+							<div class='text-4xl mb-3'>💻</div>
+							<h4
+								class='text-xl font-bold text-gray-800 dark:text-white font-handwriting'
+								>Lenguajes</h4
+							>
+						</div>
+						<div class='space-y-4'>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-orange-500'>☕</span>
+									<span class='font-medium'>Java</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-orange-500 h-full rounded-sketch'
+										style='width: 90%'
+									></div>
 								</div>
-								
-								<div class="relative z-10">
-									<h4 class="text-xl font-bold mb-2 font-handwriting">{event.name}</h4>
-									<div class="text-center">
-										<div class="text-4xl font-bold mb-2 sketch-text">
-											{countdown.days}
-										</div>
-										<div class="text-sm opacity-90">
-											{countdown.days === 1 ? 'día restante' : 'días restantes'}
-										</div>
-										<div class="text-xs opacity-75 mt-2">
-											{countdown.nextDate.toLocaleDateString('es-ES', { 
-												weekday: 'long', 
-												year: 'numeric', 
-												month: 'long', 
-												day: 'numeric' 
-											})}
-										</div>
-									</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-yellow-500'>⚡</span>
+									<span class='font-medium'>JavaScript</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-yellow-500 h-full rounded-sketch'
+										style='width: 85%'
+									></div>
 								</div>
-								
-								<!-- Barra de progreso animada -->
-								<div class="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
-									<div 
-										class="h-full bg-white/40 rounded-r transition-all duration-1000 animate-pulse"
-										style={`width: ${Math.max(5, 100 - (countdown.days * 2))}%`}
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-blue-500'>🐍</span>
+									<span class='font-medium'>Python</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-blue-500 h-full rounded-sketch'
+										style='width: 80%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-purple-500'>📱</span>
+									<span class='font-medium'>Kotlin</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-purple-500 h-full rounded-sketch'
+										style='width: 75%'
 									></div>
 								</div>
 							</div>
 						</div>
-					);
-				})}
-			</div>
-			
-			<!-- Mensaje especial si alguna fecha es hoy -->
-			<div class="text-center mt-8">
-				{importantDates.some(event => getDaysUntil(event.date).days === 0) && (
-					<div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white p-4 rounded-sketch shadow-sketch max-w-md mx-auto animate-bounce">
-						<div class="font-bold text-lg">🎉 ¡HOY ES UN DÍA ESPECIAL! 🎉</div>
 					</div>
-				)}
+				</div>
+
+				<!-- Desarrollo Web -->
+				<div class='card-sketch'>
+					<div
+						class='bg-white/90 dark:bg-gray-800/90 border-4 border-green-300 dark:border-green-600 rounded-sketch-lg p-6 shadow-sketch'>
+						<div class='text-center mb-6'>
+							<div class='text-4xl mb-3'>🌐</div>
+							<h4
+								class='text-xl font-bold text-gray-800 dark:text-white font-handwriting'
+								>Desarrollo Web</h4
+							>
+						</div>
+						<div class='space-y-4'>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-orange-600'>🎨</span>
+									<span class='font-medium'>HTML/CSS</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-orange-600 h-full rounded-sketch'
+										style='width: 95%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-blue-600'>⚛️</span>
+									<span class='font-medium'>React</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-blue-600 h-full rounded-sketch'
+										style='width: 70%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-green-600'>🟢</span>
+									<span class='font-medium'>Node.js</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-green-600 h-full rounded-sketch'
+										style='width: 75%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-indigo-600'>💾</span>
+									<span class='font-medium'>MySQL</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-indigo-600 h-full rounded-sketch'
+										style='width: 85%'
+									></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Herramientas y Frameworks -->
+				<div class='card-sketch'>
+					<div
+						class='bg-white/90 dark:bg-gray-800/90 border-4 border-purple-300 dark:border-purple-600 rounded-sketch-lg p-6 shadow-sketch'>
+						<div class='text-center mb-6'>
+							<div class='text-4xl mb-3'>🛠️</div>
+							<h4
+								class='text-xl font-bold text-gray-800 dark:text-white font-handwriting'
+								>Herramientas</h4
+							>
+						</div>
+						<div class='space-y-4'>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-gray-800'>🐙</span>
+									<span class='font-medium'>Git/GitHub</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-gray-800 h-full rounded-sketch'
+										style='width: 90%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-blue-500'>📋</span>
+									<span class='font-medium'
+										>Android Studio</span
+									>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-blue-500 h-full rounded-sketch'
+										style='width: 85%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-purple-600'>🎨</span>
+									<span class='font-medium'>Figma</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-purple-600 h-full rounded-sketch'
+										style='width: 70%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-blue-400'>💻</span>
+									<span class='font-medium'>VS Code</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-blue-400 h-full rounded-sketch'
+										style='width: 95%'
+									></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Habilidades de Diseño -->
+				<div class='card-sketch'>
+					<div
+						class='bg-white/90 dark:bg-gray-800/90 border-4 border-pink-300 dark:border-pink-600 rounded-sketch-lg p-6 shadow-sketch'>
+						<div class='text-center mb-6'>
+							<div class='text-4xl mb-3'>🎨</div>
+							<h4
+								class='text-xl font-bold text-gray-800 dark:text-white font-handwriting'
+								>Arte Digital</h4
+							>
+						</div>
+						<div class='space-y-4'>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-blue-500'>🎭</span>
+									<span class='font-medium'>UI/UX Design</span
+									>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-blue-500 h-full rounded-sketch'
+										style='width: 65%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-orange-500'>🖼️</span>
+									<span class='font-medium'>Ilustración</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-orange-500 h-full rounded-sketch'
+										style='width: 60%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-green-500'>🌈</span>
+									<span class='font-medium'
+										>Teoría del Color</span
+									>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-green-500 h-full rounded-sketch'
+										style='width: 70%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-purple-500'>✨</span>
+									<span class='font-medium'>Creatividad</span>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-purple-500 h-full rounded-sketch'
+										style='width: 90%'
+									></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Habilidades Blandas -->
+				<div class='card-sketch'>
+					<div
+						class='bg-white/90 dark:bg-gray-800/90 border-4 border-yellow-300 dark:border-yellow-600 rounded-sketch-lg p-6 shadow-sketch'>
+						<div class='text-center mb-6'>
+							<div class='text-4xl mb-3'>🤝</div>
+							<h4
+								class='text-xl font-bold text-gray-800 dark:text-white font-handwriting'
+								>Soft Skills</h4
+							>
+						</div>
+						<div class='space-y-4'>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-red-500'>❤️</span>
+									<span class='font-medium'
+										>Trabajo en Equipo</span
+									>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-red-500 h-full rounded-sketch'
+										style='width: 95%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-blue-500'>🧠</span>
+									<span class='font-medium'
+										>Resolución de Problemas</span
+									>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-blue-500 h-full rounded-sketch'
+										style='width: 90%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-green-500'>📚</span>
+									<span class='font-medium'
+										>Aprendizaje Continuo</span
+									>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-green-500 h-full rounded-sketch'
+										style='width: 100%'
+									></div>
+								</div>
+							</div>
+							<div class='flex items-center justify-between'>
+								<span class='flex items-center gap-2'>
+									<span class='text-purple-500'>🎯</span>
+									<span class='font-medium'
+										>Autodisciplina</span
+									>
+								</span>
+								<div
+									class='w-20 bg-gray-200 rounded-sketch h-2'>
+									<div
+										class='bg-purple-500 h-full rounded-sketch'
+										style='width: 85%'
+									></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Certificaciones y Logros -->
+				<div class='card-sketch'>
+					<div
+						class='bg-white/90 dark:bg-gray-800/90 border-4 border-indigo-300 dark:border-indigo-600 rounded-sketch-lg p-6 shadow-sketch'>
+						<div class='text-center mb-6'>
+							<div class='text-4xl mb-3'>🏆</div>
+							<h4
+								class='text-xl font-bold text-gray-800 dark:text-white font-handwriting'
+								>Logros</h4
+							>
+						</div>
+						<div class='space-y-3'>
+							<div
+								class='flex items-center gap-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-sketch border-2 border-blue-200 dark:border-blue-800'>
+								<span class='text-blue-600 text-xl'>🎓</span>
+								<div>
+									<div class='font-medium text-sm'
+										>Graduada DAM</div
+									>
+									<div class='text-xs text-gray-500'
+										>Desarrollo Multiplataforma</div
+									>
+								</div>
+							</div>
+							<div
+								class='flex items-center gap-3 p-3 bg-green-50 dark:bg-green-900/20 rounded-sketch border-2 border-green-200 dark:border-green-800'>
+								<span class='text-green-600 text-xl'>🎓</span>
+								<div>
+									<div class='font-medium text-sm'
+										>Graduada DAW</div
+									>
+									<div class='text-xs text-gray-500'
+										>Desarrollo Web</div
+									>
+								</div>
+							</div>
+							<div
+								class='flex items-center gap-3 p-3 bg-purple-50 dark:bg-purple-900/20 rounded-sketch border-2 border-purple-200 dark:border-purple-800'>
+								<span class='text-purple-600 text-xl'>🚀</span>
+								<div>
+									<div class='font-medium text-sm'
+										>Cinammon.net</div
+									>
+									<div class='text-xs text-gray-500'
+										>Proyecto Principal</div
+									>
+								</div>
+							</div>
+							<div
+								class='flex items-center gap-3 p-3 bg-orange-50 dark:bg-orange-900/20 rounded-sketch border-2 border-orange-200 dark:border-orange-800'>
+								<span class='text-orange-600 text-xl'>📚</span>
+								<div>
+									<div class='font-medium text-sm'
+										>Arte Digital</div
+									>
+									<div class='text-xs text-gray-500'
+										>En progreso</div
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Estadísticas de habilidades -->
+			<div class='mt-12 text-center'>
+				<div
+					class='bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 border-4 border-blue-300 dark:border-blue-600 rounded-sketch-lg p-8'>
+					<h4
+						class='text-2xl font-bold mb-6 text-gray-800 dark:text-white font-handwriting'
+						>💪 Mi Stack Actual</h4
+					>
+					<div class='grid grid-cols-2 md:grid-cols-4 gap-6'>
+						<div class='text-center'>
+							<div class='text-3xl font-bold text-blue-600 mb-2'
+								>4+</div
+							>
+							<div
+								class='text-sm text-gray-600 dark:text-gray-400'
+								>Lenguajes</div
+							>
+						</div>
+						<div class='text-center'>
+							<div class='text-3xl font-bold text-green-600 mb-2'
+								>10+</div
+							>
+							<div
+								class='text-sm text-gray-600 dark:text-gray-400'
+								>Tecnologías</div
+							>
+						</div>
+						<div class='text-center'>
+							<div class='text-3xl font-bold text-purple-600 mb-2'
+								>2</div
+							>
+							<div
+								class='text-sm text-gray-600 dark:text-gray-400'
+								>Títulos</div
+							>
+						</div>
+						<div class='text-center'>
+							<div class='text-3xl font-bold text-orange-600 mb-2'
+								>1</div
+							>
+							<div
+								class='text-sm text-gray-600 dark:text-gray-400'
+								>Proyecto Principal</div
+							>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
 		<!-- Sección de Contacto -->
-		<section id='contact' class='py-20'>
-			<div class="text-center mb-12">
+		<section
+			id='contact'
+			class='py-20'>
+			<div class='text-center mb-12'>
 				<h3 class='text-3xl md:text-4xl font-bold mb-4'>
-					<span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+					<span
+						class='bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'>
 						¿Trabajamos juntos?
 					</span>
 				</h3>
-				<p class="text-lg text-gray-300">Estoy abierta a nuevas oportunidades y colaboraciones</p>
+				<p class='text-lg text-gray-300'
+					>Estoy abierta a nuevas oportunidades y colaboraciones</p
+				>
 			</div>
-			
-			<div class="grid md:grid-cols-2 gap-12">
+
+			<div class='grid md:grid-cols-2 gap-12'>
 				<!-- Formulario de contacto -->
-				<div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
+				<div
+					class='bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8'>
 					<form
 						class='space-y-6'
 						onsubmit="alert('Esto es un demo. Integra un backend o form service.'); return false;">
 						<div>
-							<label for="name" class="block text-sm font-medium mb-2">Nombre completo</label>
+							<label
+								for='name'
+								class='block text-sm font-medium mb-2'
+								>Nombre completo</label
+							>
 							<input
-								id="name"
+								id='name'
 								name='name'
 								placeholder='Tu nombre'
 								class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all'
@@ -333,9 +822,13 @@ function getDaysUntil(targetDate: Date) {
 							/>
 						</div>
 						<div>
-							<label for="email" class="block text-sm font-medium mb-2">Email</label>
+							<label
+								for='email'
+								class='block text-sm font-medium mb-2'
+								>Email</label
+							>
 							<input
-								id="email"
+								id='email'
 								type='email'
 								name='email'
 								placeholder='tu@email.com'
@@ -344,9 +837,13 @@ function getDaysUntil(targetDate: Date) {
 							/>
 						</div>
 						<div>
-							<label for="subject" class="block text-sm font-medium mb-2">Asunto</label>
+							<label
+								for='subject'
+								class='block text-sm font-medium mb-2'
+								>Asunto</label
+							>
 							<input
-								id="subject"
+								id='subject'
 								name='subject'
 								placeholder='¿De qué quieres hablar?'
 								class='w-full bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all'
@@ -354,9 +851,13 @@ function getDaysUntil(targetDate: Date) {
 							/>
 						</div>
 						<div>
-							<label for="message" class="block text-sm font-medium mb-2">Mensaje</label>
+							<label
+								for='message'
+								class='block text-sm font-medium mb-2'
+								>Mensaje</label
+							>
 							<textarea
-								id="message"
+								id='message'
 								name='message'
 								placeholder='Cuéntame sobre tu proyecto o idea...'
 								rows='5'
@@ -365,303 +866,658 @@ function getDaysUntil(targetDate: Date) {
 							></textarea>
 						</div>
 						<button
-							type="submit"
-							class='w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:scale-[1.02] transition-transform shadow-lg hover:shadow-xl'
-						>
+							type='submit'
+							class='w-full px-6 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl font-semibold hover:scale-[1.02] transition-transform shadow-lg hover:shadow-xl'>
 							Enviar mensaje
 						</button>
 					</form>
 				</div>
-				
+
 				<!-- Información de contacto -->
-				<div class="space-y-8">
-					<div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8">
-						<h4 class="text-xl font-semibold mb-6">Otras formas de contacto</h4>
-						<div class="space-y-4">
-							<a href="mailto:nia@example.com" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors group">
-								<div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center">
-									<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-										<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+				<div class='space-y-8'>
+					<div
+						class='bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8'>
+						<h4 class='text-xl font-semibold mb-6'
+							>Otras formas de contacto</h4
+						>
+						<div class='space-y-4'>
+							<a
+								href='mailto:contact@zhiyao.dev'
+								class='flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors group'>
+								<div
+									class='w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center'>
+									<svg
+										class='w-6 h-6 text-white'
+										fill='none'
+										stroke='currentColor'
+										viewBox='0 0 24 24'>
+										<path
+											stroke-linecap='round'
+											stroke-linejoin='round'
+											stroke-width='2'
+											d='M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+										></path>
 									</svg>
 								</div>
 								<div>
-									<p class="font-medium">Email</p>
-									<p class="text-sm text-gray-400">nia@example.com</p>
+									<p class='font-medium'>Email</p>
+									<p class='text-sm text-gray-400'
+										>contact@zhiyao.dev</p
+									>
 								</div>
-								<svg class="w-5 h-5 text-gray-400 group-hover:text-blue-300 group-hover:translate-x-1 transition-all ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+								<svg
+									class='w-5 h-5 text-gray-400 group-hover:text-blue-300 group-hover:translate-x-1 transition-all ml-auto'
+									fill='none'
+									stroke='currentColor'
+									viewBox='0 0 24 24'>
+									<path
+										stroke-linecap='round'
+										stroke-linejoin='round'
+										stroke-width='2'
+										d='M9 5l7 7-7 7'
+									></path>
 								</svg>
 							</a>
-							
-							<a href="https://linkedin.com/in/nia" target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors group">
-								<div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center">
-									<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-										<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+
+							<a
+								href='https://linkedin.com/in/nia'
+								target='_blank'
+								class='flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors group'>
+								<div
+									class='w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center'>
+									<svg
+										class='w-6 h-6 text-white'
+										fill='currentColor'
+										viewBox='0 0 24 24'>
+										<path
+											d='M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z'
+										></path>
 									</svg>
 								</div>
 								<div>
-									<p class="font-medium">LinkedIn</p>
-									<p class="text-sm text-gray-400">linkedin.com/in/nia</p>
+									<p class='font-medium'>LinkedIn</p>
+									<p class='text-sm text-gray-400'
+										>linkedin.com/in/nia</p
+									>
 								</div>
-								<svg class="w-5 h-5 text-gray-400 group-hover:text-blue-300 group-hover:translate-x-1 transition-all ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+								<svg
+									class='w-5 h-5 text-gray-400 group-hover:text-blue-300 group-hover:translate-x-1 transition-all ml-auto'
+									fill='none'
+									stroke='currentColor'
+									viewBox='0 0 24 24'>
+									<path
+										stroke-linecap='round'
+										stroke-linejoin='round'
+										stroke-width='2'
+										d='M9 5l7 7-7 7'
+									></path>
 								</svg>
 							</a>
-							
-							<a href="https://github.com/nia" target="_blank" class="flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors group">
-								<div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center">
-									<svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-										<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+
+							<a
+								href='https://github.com/nia'
+								target='_blank'
+								class='flex items-center gap-4 p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-colors group'>
+								<div
+									class='w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center'>
+									<svg
+										class='w-6 h-6 text-white'
+										fill='currentColor'
+										viewBox='0 0 24 24'>
+										<path
+											d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'
+										></path>
 									</svg>
 								</div>
 								<div>
-									<p class="font-medium">GitHub</p>
-									<p class="text-sm text-gray-400">github.com/nia</p>
+									<p class='font-medium'>GitHub</p>
+									<p class='text-sm text-gray-400'
+										>github.com/nia</p
+									>
 								</div>
-								<svg class="w-5 h-5 text-gray-400 group-hover:text-blue-300 group-hover:translate-x-1 transition-all ml-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+								<svg
+									class='w-5 h-5 text-gray-400 group-hover:text-blue-300 group-hover:translate-x-1 transition-all ml-auto'
+									fill='none'
+									stroke='currentColor'
+									viewBox='0 0 24 24'>
+									<path
+										stroke-linecap='round'
+										stroke-linejoin='round'
+										stroke-width='2'
+										d='M9 5l7 7-7 7'
+									></path>
 								</svg>
 							</a>
 						</div>
 					</div>
-					
+
 					<!-- Estado de disponibilidad -->
-					<div class="bg-gradient-to-r from-green-500/10 to-blue-500/10 backdrop-blur-sm border border-green-400/30 rounded-3xl p-8">
-						<div class="flex items-center gap-3 mb-4">
-							<div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-							<span class="text-green-400 font-medium">Disponible para proyectos</span>
+					<div
+						class='bg-gradient-to-r from-green-500/10 to-blue-500/10 backdrop-blur-sm border border-green-400/30 rounded-3xl p-8'>
+						<div class='flex items-center gap-3 mb-4'>
+							<div
+								class='w-3 h-3 bg-green-400 rounded-full animate-pulse'
+							></div>
+							<span class='text-green-400 font-medium'
+								>Disponible para proyectos</span
+							>
 						</div>
-						<p class="text-sm text-gray-300">
-							Actualmente estoy disponible para nuevos proyectos y colaboraciones. 
-							¡No dudes en contactarme!
+						<p class='text-sm text-gray-300'>
+							Actualmente estoy disponible para nuevos proyectos y
+							colaboraciones. ¡No dudes en contactarme!
 						</p>
 					</div>
 				</div>
 			</div>
-	<!-- Sección de Newsletter/Registro -->
-	<section class='py-20'>
-		<div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12 text-center">
-			<div class="max-w-2xl mx-auto">
-				<h3 class='text-3xl md:text-4xl font-bold mb-4'>
-					<span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-						¿Te gustaría estar al día?
-					</span>
-				</h3>
-				<p class="text-lg text-gray-300 mb-8">
-					Únete a mi comunidad y recibe actualizaciones sobre nuevos proyectos, 
-					tutoriales exclusivos y recursos de desarrollo web.
-				</p>
-				
-				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-					<a href="/register" 
-						class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg hover:shadow-xl">
-						<span class="flex items-center gap-2">
-							<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-							</svg>
-							Registrarme gratis
-						</span>
-					</a>
-					<p class="text-sm text-gray-400">
-						Sin spam · Cancela cuando quieras
-					</p>
+			<!-- Sección de Newsletter/Registro -->
+			<section class='py-20'>
+				<div
+					class='bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12 text-center'>
+					<div class='max-w-2xl mx-auto'>
+						<h3 class='text-3xl md:text-4xl font-bold mb-4'>
+							<span
+								class='bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'>
+								¿Te gustaría estar al día?
+							</span>
+						</h3>
+						<p class='text-lg text-gray-300 mb-8'>
+							Únete a mi comunidad y recibe actualizaciones sobre
+							nuevos proyectos, tutoriales exclusivos y recursos
+							de desarrollo web.
+						</p>
+
+						<div
+							class='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+							<a
+								href='/register'
+								class='px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg hover:shadow-xl'>
+								<span class='flex items-center gap-2'>
+									<svg
+										class='w-5 h-5'
+										fill='none'
+										stroke='currentColor'
+										viewBox='0 0 24 24'>
+										<path
+											stroke-linecap='round'
+											stroke-linejoin='round'
+											stroke-width='2'
+											d='M12 6v6m0 0v6m0-6h6m-6 0H6'
+										></path>
+									</svg>
+									Registrarme gratis
+								</span>
+							</a>
+							<p class='text-sm text-gray-400'>
+								Sin spam · Cancela cuando quieras
+							</p>
+						</div>
+
+						<!-- Estadísticas o beneficios -->
+						<div
+							class='grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-white/10'>
+							<div>
+								<div class='text-2xl font-bold text-blue-400'
+									>50+</div
+								>
+								<div class='text-sm text-gray-400'
+									>Proyectos</div
+								>
+							</div>
+							<div>
+								<div class='text-2xl font-bold text-purple-400'
+									>100+</div
+								>
+								<div class='text-sm text-gray-400'
+									>Suscriptores</div
+								>
+							</div>
+							<div>
+								<div class='text-2xl font-bold text-green-400'
+									>24h</div
+								>
+								<div class='text-sm text-gray-400'
+									>Respuesta</div
+								>
+							</div>
+						</div>
+					</div>
 				</div>
-				
-				<!-- Estadísticas o beneficios -->
-				<div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-white/10">
+			</section>
+		</section>
+
+		<!-- Footer mejorado -->
+		<footer
+			class='bg-white/5 backdrop-blur-sm border-t border-white/10 mt-20'>
+			<div class='mx-auto max-w-6xl px-4 py-12'>
+				<div class='grid md:grid-cols-3 gap-8'>
 					<div>
-						<div class="text-2xl font-bold text-blue-400">50+</div>
-						<div class="text-sm text-gray-400">Proyectos</div>
+						<h4
+							class='text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4'>
+							Nia · Portfolio
+						</h4>
+						<p class='text-gray-400 text-sm leading-relaxed'>
+							Desarrolladora web apasionada por crear experiencias
+							digitales increíbles.
+						</p>
 					</div>
+
 					<div>
-						<div class="text-2xl font-bold text-purple-400">100+</div>
-						<div class="text-sm text-gray-400">Suscriptores</div>
+						<h5 class='font-semibold mb-4'>Enlaces rápidos</h5>
+						<div class='space-y-2 text-sm'>
+							<a
+								href='/#projects'
+								class='block text-gray-400 hover:text-white transition-colors'
+								>Proyectos</a
+							>
+							<a
+								href='/#about'
+								class='block text-gray-400 hover:text-white transition-colors'
+								>Sobre mí</a
+							>
+							<a
+								href='/#contact'
+								class='block text-gray-400 hover:text-white transition-colors'
+								>Contacto</a
+							>
+						</div>
 					</div>
+
 					<div>
-						<div class="text-2xl font-bold text-green-400">24h</div>
-						<div class="text-sm text-gray-400">Respuesta</div>
+						<h5 class='font-semibold mb-4'>Sígueme</h5>
+						<div class='flex gap-4'>
+							<a
+								href='https://github.com/lz20r'
+								target='_blank'
+								class='w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors'>
+								<svg
+									class='w-5 h-5'
+									fill='currentColor'
+									viewBox='0 0 24 24'>
+									<path
+										d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'
+									></path>
+								</svg>
+							</a>
+							<a
+								href='mailto:contact@zhiyao.dev'
+								class='w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors'>
+								<svg
+									class='w-5 h-5'
+									fill='currentColor'
+									viewBox='0 0 24 24'>
+									<path
+										d='M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z'
+									></path>
+								</svg>
+							</a>
+						</div>
 					</div>
+				</div>
+
+				<div
+					class='border-t border-white/10 mt-8 pt-8 text-center text-sm text-gray-400'>
+					<p
+						>&copy; {new Date().getFullYear()} Naiara Zhiyao Portfolio.
+						Hecho con ❤️ usando Astro y Tailwind CSS.</p
+					>
 				</div>
 			</div>
-		</div>
-	</section>
-
+		</footer>
 	</main>
 
-	<!-- Footer mejorado -->
-	<footer class='bg-white/5 backdrop-blur-sm border-t border-white/10 mt-20'>
-		<div class='mx-auto max-w-6xl px-4 py-12'>
-			<div class="grid md:grid-cols-3 gap-8">
-				<div>
-					<h4 class="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
-						Nia · Portfolio
-					</h4>
-					<p class="text-gray-400 text-sm leading-relaxed">
-						Desarrolladora web apasionada por crear experiencias digitales increíbles.
-					</p>
-				</div>
-				
-				<div>
-					<h5 class="font-semibold mb-4">Enlaces rápidos</h5>
-					<div class="space-y-2 text-sm">
-						<a href="/#projects" class="block text-gray-400 hover:text-white transition-colors">Proyectos</a>
-						<a href="/#about" class="block text-gray-400 hover:text-white transition-colors">Sobre mí</a>
-						<a href="/#contact" class="block text-gray-400 hover:text-white transition-colors">Contacto</a>
-					</div>
-				</div>
-				
-				<div>
-					<h5 class="font-semibold mb-4">Sígueme</h5>
-					<div class="flex gap-4">
-						<a href="https://github.com/nia" target="_blank" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
-							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-							</svg>
-						</a>
-						<a href="https://linkedin.com/in/nia" target="_blank" class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
-							<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-							</svg>
-						</a>
-					</div>
-				</div>
-			</div>
-			
-			<div class="border-t border-white/10 mt-8 pt-8 text-center text-sm text-gray-400">
-				<p>&copy; {new Date().getFullYear()} Nia Portfolio. Hecho con ❤️ usando Astro y Tailwind CSS.</p>
+	<!-- Modal de notificaciones -->
+	<div
+		id='notificationModal'
+		class='fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center'>
+		<div
+			class='bg-white dark:bg-gray-800 rounded-sketch-lg p-8 m-4 max-w-md border-4 border-blue-300 dark:border-blue-600'>
+			<h3
+				class='text-2xl font-bold mb-4 text-gray-800 dark:text-white font-handwriting'
+				>🔔 Notificaciones Especiales</h3
+			>
+			<p class='text-gray-600 dark:text-gray-300 mb-6 leading-relaxed'>
+				¿Te gustaría recibir notificaciones en fechas especiales como mi
+				cumpleaños (20 enero) y aniversario (2 septiembre)?
+			</p>
+			<div class='flex gap-4'>
+				<button
+					id='allowNotifications'
+					class='flex-1 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-sketch font-medium transition-colors'>
+					✅ Sí, quiero
+				</button>
+				<button
+					id='denyNotifications'
+					class='flex-1 bg-gray-300 hover:bg-gray-400 text-gray-700 px-4 py-2 rounded-sketch font-medium transition-colors'>
+					❌ No, gracias
+				</button>
 			</div>
 		</div>
-	</footer>
-</Base>
+	</div>
 
-<script>
-	// Registrar Service Worker y configurar notificaciones
-	if ('serviceWorker' in navigator && 'Notification' in window) {
-		// Registrar el service worker
-		navigator.serviceWorker.register('/sw.js')
-			.then(function(registration) {
-				console.log('Service Worker registrado:', registration);
-				
-				// Solicitar permisos de notificación
+	<script>
+		// Registrar Service Worker
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', function () {
+				navigator.serviceWorker
+					.register('/sw.js')
+					.then(function (registration) {
+						console.log(
+							'ServiceWorker registrado exitosamente:',
+							registration.scope,
+						);
+					})
+					.catch(function (err) {
+						console.log('ServiceWorker falló:', err);
+					});
+			});
+		}
+
+		// Sistema de notificaciones
+		function requestNotificationPermission() {
+			if ('Notification' in window) {
 				if (Notification.permission === 'default') {
-					requestNotificationPermission();
+					document
+						.getElementById('notificationModal')
+						.classList.remove('hidden');
 				}
-				
-				// Verificar fechas importantes inmediatamente
-				checkSpecialDates();
-				
-				// Verificar cada día a las 9:00 AM
-				scheduleDailyChecks();
-			})
-			.catch(function(error) {
-				console.log('Error al registrar Service Worker:', error);
-			});
-	}
-
-	function requestNotificationPermission() {
-		// Mostrar un modal bonito para solicitar permisos
-		const modal = document.createElement('div');
-		modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
-		modal.innerHTML = `
-			<div class="bg-white rounded-sketch p-8 max-w-md mx-4 shadow-sketch border-4 border-purple-300">
-				<div class="text-center">
-					<div class="text-4xl mb-4">🔔</div>
-					<h3 class="text-xl font-bold mb-4 text-gray-800">¡Notificaciones Especiales!</h3>
-					<p class="text-gray-600 mb-6">
-						¿Te gustaría recibir recordatorios en tu móvil para fechas importantes como tu cumpleaños y aniversario?
-					</p>
-					<div class="flex gap-4 justify-center">
-						<button id="allowNotifications" class="px-6 py-3 bg-purple-500 text-white rounded-sketch hover:bg-purple-600 btn-sketch font-bold">
-							✨ ¡Sí, quiero!
-						</button>
-						<button id="denyNotifications" class="px-6 py-3 bg-gray-400 text-white rounded-sketch hover:bg-gray-500 btn-sketch">
-							No gracias
-						</button>
-					</div>
-				</div>
-			</div>
-		`;
-		
-		document.body.appendChild(modal);
-		
-		document.getElementById('allowNotifications').onclick = function() {
-			Notification.requestPermission().then(function(permission) {
-				if (permission === 'granted') {
-					showSuccessMessage();
-				}
-				modal.remove();
-			});
-		};
-		
-		document.getElementById('denyNotifications').onclick = function() {
-			modal.remove();
-		};
-	}
-
-	function showSuccessMessage() {
-		const success = document.createElement('div');
-		success.className = 'fixed top-4 right-4 bg-green-500 text-white p-4 rounded-sketch shadow-sketch z-50 animate-bounce';
-		success.innerHTML = `
-			<div class="flex items-center gap-2">
-				<span>🎉</span>
-				<span class="font-bold">¡Notificaciones activadas!</span>
-			</div>
-		`;
-		document.body.appendChild(success);
-		
-		setTimeout(() => success.remove(), 4000);
-	}
-
-	function checkSpecialDates() {
-		const today = new Date();
-		const todayMonth = today.getMonth();
-		const todayDay = today.getDate();
-		
-		// Verificar si hoy es una fecha especial
-		if ((todayMonth === 0 && todayDay === 20) || (todayMonth === 8 && todayDay === 2)) {
-			if (Notification.permission === 'granted') {
-				triggerSpecialDayNotification(todayMonth, todayDay);
 			}
 		}
-	}
 
-	function triggerSpecialDayNotification(month, day) {
-		let title = '';
-		let body = '';
-		
-		if (month === 0 && day === 20) {
-			title = '🎂 ¡Feliz Cumpleaños, Naiara! 🎉';
-			body = '¡Hoy es tu día especial! Que tengas un cumpleaños maravilloso.';
-		} else if (month === 8 && day === 2) {
-			title = '💕 ¡Feliz Aniversario! ❤️';
-			body = '¡Hoy celebramos vuestro aniversario! Un día muy especial.';
+		// Verificar fechas especiales y mostrar notificaciones
+		function triggerSpecialDayNotification(month, day) {
+			const today = new Date();
+			if (today.getMonth() === month && today.getDate() === day) {
+				if (Notification.permission === 'granted') {
+					if (month === 0 && day === 20) {
+						// Cumpleaños
+						new Notification('🎂 ¡Feliz Cumpleaños, Naiara! 🎉', {
+							body: '¡Hoy es tu día especial! 🎈',
+							icon: '/favicon.svg',
+						});
+					} else if (month === 8 && day === 2) {
+						// Aniversario
+						new Notification('💕 ¡Feliz Aniversario! ❤️', {
+							body: '¡Celebrando vuestro día especial! 🥳',
+							icon: '/favicon.svg',
+						});
+					}
+				}
+			}
 		}
-		
-		if (title && body) {
-			new Notification(title, {
-				body: body,
-				icon: '/favicon.svg'
+
+		// Event listeners para el modal
+		document.addEventListener('DOMContentLoaded', function () {
+			// Mostrar modal si no hay permisos
+			setTimeout(requestNotificationPermission, 3000);
+
+			// Botón permitir notificaciones
+			document
+				.getElementById('allowNotifications')
+				?.addEventListener('click', function () {
+					Notification.requestPermission().then(
+						function (permission) {
+							document
+								.getElementById('notificationModal')
+								.classList.add('hidden');
+							if (permission === 'granted') {
+								// Verificar si hoy es una fecha especial
+								triggerSpecialDayNotification(0, 20); // Cumpleaños
+								triggerSpecialDayNotification(8, 2); // Aniversario
+							}
+						},
+					);
+				});
+
+			// Botón denegar notificaciones
+			document
+				.getElementById('denyNotifications')
+				?.addEventListener('click', function () {
+					document
+						.getElementById('notificationModal')
+						.classList.add('hidden');
+				});
+
+			// Verificar fechas especiales al cargar
+			triggerSpecialDayNotification(0, 20); // Cumpleaños
+			triggerSpecialDayNotification(8, 2); // Aniversario
+		});
+
+		// Sistema de estadísticas
+		function getStats() {
+			const stats = localStorage.getItem('portfolioStats');
+			return stats ?
+					JSON.parse(stats)
+				:	{
+						visits: 42,
+						todayVisits: 8,
+						subscribers: 127,
+						newSubscribers: 3,
+						onlineTime: 0,
+						countries: {
+							spain: 234,
+							us: 189,
+							mexico: 156,
+							others: 98,
+						},
+						lastVisit: Date.now(),
+					};
+		}
+
+		function saveStats(stats) {
+			localStorage.setItem('portfolioStats', JSON.stringify(stats));
+		}
+
+		function updateStats() {
+			const stats = getStats();
+			const now = Date.now();
+			const timeSinceLastVisit = now - stats.lastVisit;
+
+			// Si han pasado más de 30 minutos, contar como nueva visita
+			if (timeSinceLastVisit > 30 * 60 * 1000) {
+				stats.visits += Math.floor(Math.random() * 3) + 1;
+				stats.todayVisits += Math.floor(Math.random() * 2) + 1;
+
+				// Ocasionalmente agregar suscriptores
+				if (Math.random() < 0.3) {
+					stats.subscribers += Math.floor(Math.random() * 2) + 1;
+					stats.newSubscribers += Math.floor(Math.random() * 2) + 1;
+				}
+			}
+
+			stats.lastVisit = now;
+			saveStats(stats);
+			return stats;
+		}
+
+		function animateCounter(elementId, targetValue, duration = 1500) {
+			const element = document.getElementById(elementId);
+			if (!element) return;
+
+			const startValue = 0;
+			const startTime = performance.now();
+
+			function updateCounter(currentTime) {
+				const elapsed = currentTime - startTime;
+				const progress = Math.min(elapsed / duration, 1);
+				const current =
+					startValue + (targetValue - startValue) * progress;
+
+				element.textContent = Math.floor(current);
+
+				if (progress < 1) {
+					requestAnimationFrame(updateCounter);
+				}
+			}
+
+			requestAnimationFrame(updateCounter);
+		}
+
+		function calculatePercentages(countries, total) {
+			return {
+				spain: (countries.spain / total) * 100,
+				us: (countries.us / total) * 100,
+				mexico: (countries.mexico / total) * 100,
+				others: (countries.others / total) * 100,
+			};
+		}
+
+		function updateOnlineTime(startTime) {
+			const onlineTimeElement = document.getElementById('onlineTime');
+			if (!onlineTimeElement) return;
+
+			function updateTime() {
+				const now = Date.now();
+				const timeOnline = Math.floor((now - startTime) / 1000);
+				const hours = Math.floor(timeOnline / 3600);
+				const minutes = Math.floor((timeOnline % 3600) / 60);
+				const seconds = timeOnline % 60;
+
+				onlineTimeElement.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+			}
+
+			updateTime();
+			setInterval(updateTime, 1000);
+		}
+
+		// Contadores de proyecto
+		function trackProjectView(projectName) {
+			const views = JSON.parse(
+				localStorage.getItem('projectViews') || '{}',
+			);
+			views[projectName] = (views[projectName] || 0) + 1;
+			localStorage.setItem('projectViews', JSON.stringify(views));
+		}
+
+		// Inicializar estadísticas cuando se carga la página
+		document.addEventListener('DOMContentLoaded', function () {
+			const stats = updateStats();
+			const startTime = Date.now();
+
+			// Animar contadores
+			setTimeout(() => animateCounter('visitCounter', stats.visits), 500);
+			setTimeout(
+				() => animateCounter('todayVisits', stats.todayVisits),
+				800,
+			);
+			setTimeout(
+				() => animateCounter('subscriberCounter', stats.subscribers),
+				1100,
+			);
+			setTimeout(
+				() => animateCounter('newSubscribers', stats.newSubscribers),
+				1400,
+			);
+
+			// Actualizar tiempo online
+			updateOnlineTime(startTime);
+
+			// Actualizar porcentajes de países
+			const totalVisits =
+				stats.countries.spain +
+				stats.countries.us +
+				stats.countries.mexico +
+				stats.countries.others;
+			const percentages = calculatePercentages(
+				stats.countries,
+				totalVisits,
+			);
+
+			setTimeout(() => {
+				const spainElement = document.getElementById('spainVisits');
+				const usElement = document.getElementById('usVisits');
+				const mexicoElement = document.getElementById('mexicoVisits');
+				const otherElement = document.getElementById('otherVisits');
+
+				if (spainElement)
+					spainElement.textContent = percentages.spain.toFixed(1);
+				if (usElement)
+					usElement.textContent = percentages.us.toFixed(1);
+				if (mexicoElement)
+					mexicoElement.textContent = percentages.mexico.toFixed(1);
+				if (otherElement)
+					otherElement.textContent = percentages.others.toFixed(1);
+			}, 2000);
+
+			// Agregar listeners a los proyectos
+			document.querySelectorAll('[data-project]').forEach((element) => {
+				element.addEventListener('click', function (event) {
+					const target = event.currentTarget;
+					if (target && target instanceof HTMLElement) {
+						const projectName = target.getAttribute('data-project');
+						if (projectName) {
+							trackProjectView(projectName);
+						}
+					}
+				});
 			});
-		}
-	}
 
-	function scheduleDailyChecks() {
-		// Verificar cada día a las 9:00 AM
-		const now = new Date();
-		const nineMorning = new Date();
-		nineMorning.setHours(9, 0, 0, 0);
-		
-		// Si ya pasaron las 9, programar para mañana
-		if (now > nineMorning) {
-			nineMorning.setDate(nineMorning.getDate() + 1);
+			// Actualizar estadísticas periódicamente
+			setInterval(() => {
+				const updatedStats = updateStats();
+				// Solo actualizar si hay cambios significativos
+				if (Math.random() < 0.1) {
+					location.reload();
+				}
+			}, 60000); // Cada minuto
+		});
+
+		// Contador de cuenta atrás
+		function updateCountdown() {
+			const now = new Date();
+			const currentYear = now.getFullYear();
+
+			// Cumpleaños: 20 de enero
+			let birthday = new Date(currentYear, 0, 20); // mes 0 = enero
+			if (birthday < now) {
+				birthday = new Date(currentYear + 1, 0, 20);
+			}
+
+			// Aniversario: 2 de septiembre
+			let anniversary = new Date(currentYear, 8, 2); // mes 8 = septiembre
+			if (anniversary < now) {
+				anniversary = new Date(currentYear + 1, 8, 2);
+			}
+
+			function updateCounter(targetDate, elementPrefix) {
+				const timeDiff = targetDate.getTime() - now.getTime();
+				const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+				const hours = Math.floor(
+					(timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+				);
+				const minutes = Math.floor(
+					(timeDiff % (1000 * 60 * 60)) / (1000 * 60),
+				);
+				const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+				const daysElement = document.getElementById(
+					elementPrefix + 'Days',
+				);
+				const hoursElement = document.getElementById(
+					elementPrefix + 'Hours',
+				);
+				const minutesElement = document.getElementById(
+					elementPrefix + 'Minutes',
+				);
+				const secondsElement = document.getElementById(
+					elementPrefix + 'Seconds',
+				);
+
+				if (daysElement) daysElement.textContent = days.toString();
+				if (hoursElement) hoursElement.textContent = hours.toString();
+				if (minutesElement)
+					minutesElement.textContent = minutes.toString();
+				if (secondsElement)
+					secondsElement.textContent = seconds.toString();
+			}
+
+			updateCounter(birthday, 'birthday');
+			updateCounter(anniversary, 'anniversary');
 		}
-		
-		const timeUntilNine = nineMorning.getTime() - now.getTime();
-		
-		setTimeout(() => {
-			checkSpecialDates();
-			// Repetir cada 24 horas
-			setInterval(checkSpecialDates, 24 * 60 * 60 * 1000);
-		}, timeUntilNine);
-	}
-</script>
+
+		// Actualizar cuenta atrás cada segundo
+		document.addEventListener('DOMContentLoaded', function () {
+			updateCountdown();
+			setInterval(updateCountdown, 1000);
+		});
+	</script>
+</Base>
