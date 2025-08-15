@@ -1,0 +1,73 @@
+---
+// src/pages/projects/[slug].astro
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/Header.astro';
+import type { Project } from '../../data/projects';
+import { projects } from '../../data/projects';
+
+// 1) Genera todas las rutas en build
+export async function getStaticPaths() {
+	return projects.map((p) => ({
+		params: { slug: p.slug },
+		props: { project: p }, // se inyecta como Astro.props
+	}));
+}
+
+// 2) Recibe el proyecto ya resuelto desde getStaticPaths
+const { project } = Astro.props as { project: Project };
+---
+
+<Base
+	title={`${project.title} · Nia Portfolio`}
+	description={project.description ?? ''}>
+	<Header />
+
+	<main class='mx-auto max-w-6xl px-4 py-12'>
+		<a
+			href='/'
+			class='text-sm underline'
+			>← Volver</a
+		>
+		<h1 class='mt-4 text-4xl font-bold'>{project.title}</h1>
+		{
+			project.description && (
+				<p class='mt-3 text-neutral-300 max-w-2xl'>
+					{project.description}
+				</p>
+			)
+		}
+
+		<div class='mt-5 flex gap-4 text-sm'>
+			{
+				project.url && (
+					<a
+						class='underline'
+						href={project.url}
+						target='_blank'>
+						Demo
+					</a>
+				)
+			}
+			{
+				project.github && (
+					<a
+						class='underline'
+						href={project.github}
+						target='_blank'>
+						GitHub
+					</a>
+				)
+			}
+		</div>
+
+		{
+			project.image && (
+				<img
+					src={project.image}
+					alt={project.title}
+					class='mt-8 rounded-xl border border-neutral-800'
+				/>
+			)
+		}
+	</main>
+</Base>
