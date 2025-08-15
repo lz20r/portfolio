@@ -1,6 +1,6 @@
 ---
 import type { Project } from '../data/projects';
-const { p }: { p: Project } = Astro.props;
+const { p } = Astro.props as { p: Project };
 ---
 
 <article class='group card-sketch'>
