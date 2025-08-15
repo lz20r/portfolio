@@ -13,7 +13,8 @@ import Header from '../components/Header.astro';
 		<nav class="mb-8">
 			<a
 				href='/'
-				class='inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-colors text-sm font-medium'
+				class='inline-flex items-center gap-2 px-4 py-2 backdrop-blur-sm border rounded-full transition-colors text-sm font-medium'
+				style="background: var(--bg-primary)/10; border-color: var(--text-primary)/20; color: var(--text-primary);"
 			>
 				<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -23,10 +24,10 @@ import Header from '../components/Header.astro';
 		</nav>
 
 		<!-- Formulario de registro -->
-		<div class="bg-white/90 border-4 border-blue-400 rounded-sketch-lg p-8 md:p-12 card-sketch shadow-sketch-lg">
+		<div class="border-4 rounded-sketch-lg p-8 md:p-12 card-sketch shadow-sketch-lg" style="background: var(--bg-primary)/90; border-color: var(--accent-primary);">
 			<div class="text-center mb-8">
 				<h1 class='text-3xl md:text-4xl font-bold mb-4 font-handwriting'>
-					<span class="text-blue-600 sketch-text doodle-line">
+					<span class="sketch-text doodle-line" style="color: var(--accent-primary);">
 						🌟 ¡Únete a mi aventura digital!
 					</span>
 				</h1>
