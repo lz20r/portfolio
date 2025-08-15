@@ -6,7 +6,9 @@ const { p }: { p: Project } = Astro.props;
 <article class="group card-sketch">
 	<a
 		href={`/projects/${p.slug}`}
-		class='block bg-white/80 backdrop-blur-sm border-2 border-blue-300 rounded-sketch-lg p-6 hover:bg-white/90 hover:border-purple-400 hover:shadow-sketch-lg transition-all duration-300 hand-drawn'>
+		class='block backdrop-blur-sm border-2 rounded-sketch-lg p-6 transition-all duration-300 hand-drawn bg-white/80 hover:bg-white/90'
+		style="border-color: var(--accent-primary);"
+		>
 		
 		<!-- Badge de proyecto destacado -->
 		{p.featured && (
@@ -56,3 +58,25 @@ const { p }: { p: Project } = Astro.props;
 		</div>
 	</a>
 </article>
+
+<style>
+	[data-theme="dark"] .card-sketch a {
+		background: #111111 !important;
+		border-color: #4285f4 !important;
+		color: #ffffff !important;
+	}
+	
+	[data-theme="dark"] .card-sketch h4 {
+		color: #4285f4 !important;
+	}
+	
+	[data-theme="dark"] .card-sketch p {
+		color: #cccccc !important;
+	}
+	
+	[data-theme="dark"] .card-sketch span {
+		background: #222222 !important;
+		border-color: #4285f4 !important;
+		color: #4285f4 !important;
+	}
+</style>
