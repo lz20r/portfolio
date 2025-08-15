@@ -1,0 +1,171 @@
+/* Estilos sketch personalizados */
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Caveat:wght@400;600;700&display=swap');
+
+/* Efectos de fondo tipo papel */
+.paper-texture {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px;
+}
+
+/* Bordes dibujados a mano */
+.hand-drawn {
+  position: relative;
+}
+
+.hand-drawn::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 2px solid currentColor;
+  border-radius: 15px 25px 20px 30px / 25px 15px 30px 20px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Efectos de texto dibujado */
+.sketch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.sketch-text::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    currentColor 5%, 
+    currentColor 20%, 
+    transparent 25%,
+    currentColor 30%, 
+    currentColor 45%, 
+    transparent 50%,
+    currentColor 55%, 
+    currentColor 70%, 
+    transparent 75%,
+    currentColor 80%, 
+    currentColor 95%, 
+    transparent 100%);
+  opacity: 0.7;
+}
+
+/* Botones sketch */
+.btn-sketch {
+  position: relative;
+  transform: rotate(-1deg);
+  transition: all 0.3s ease;
+}
+
+.btn-sketch:hover {
+  transform: rotate(1deg) scale(1.05);
+}
+
+.btn-sketch::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: -3px;
+  bottom: -3px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: inherit;
+  z-index: -1;
+  transform: rotate(2deg);
+}
+
+/* Tarjetas sketch */
+.card-sketch {
+  position: relative;
+  transform: rotate(-0.5deg);
+  transition: all 0.3s ease;
+}
+
+.card-sketch:hover {
+  transform: rotate(0.5deg) translateY(-5px);
+}
+
+.card-sketch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  border-radius: inherit;
+  filter: blur(1px);
+  opacity: 0.5;
+  z-index: -1;
+  transform: translate(2px, 2px) rotate(1deg);
+}
+
+/* Líneas garabateadas */
+.doodle-line {
+  position: relative;
+}
+
+.doodle-line::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20'%3E%3Cpath d='M0,10 Q25,5 50,10 T100,10' stroke='rgba(59,130,246,0.5)' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+/* Animaciones sketch */
+@keyframes sketch-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-5deg);
+    filter: blur(2px);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1) rotate(2deg);
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-1deg);
+    filter: blur(0);
+  }
+}
+
+.sketch-in {
+  animation: sketch-in 0.8s ease-out forwards;
+}
+
+/* Sombras tipo boceto */
+.shadow-sketch {
+  box-shadow: 
+    3px 3px 0px rgba(0,0,0,0.2),
+    6px 6px 0px rgba(59,130,246,0.1),
+    9px 9px 0px rgba(139,92,246,0.05);
+}
+
+/* Efectos de marcador */
+.marker-highlight {
+  background: linear-gradient(120deg, 
+    transparent 0%, 
+    transparent 40%, 
+    rgba(59,130,246,0.3) 40%, 
+    rgba(59,130,246,0.3) 60%, 
+    transparent 60%);
+}
+
+/* Bordes ondulados */
+.wavy-border {
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 10'%3E%3Cpath d='M0,5 Q25,0 50,5 T100,5' stroke='currentColor' stroke-width='2' fill='none'/%3E%3C/svg%3E") 10;
+}
