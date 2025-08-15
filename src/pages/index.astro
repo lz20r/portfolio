@@ -533,3 +533,133 @@ function getDaysUntil(targetDate: Date) {
 		</div>
 	</footer>
 </Base>
+
+<script>
+	// Registrar Service Worker y configurar notificaciones
+	if ('serviceWorker' in navigator && 'Notification' in window) {
+		// Registrar el service worker
+		navigator.serviceWorker.register('/sw.js')
+			.then(function(registration) {
+				console.log('Service Worker registrado:', registration);
+				
+				// Solicitar permisos de notificación
+				if (Notification.permission === 'default') {
+					requestNotificationPermission();
+				}
+				
+				// Verificar fechas importantes inmediatamente
+				checkSpecialDates();
+				
+				// Verificar cada día a las 9:00 AM
+				scheduleDaily Checks();
+			})
+			.catch(function(error) {
+				console.log('Error al registrar Service Worker:', error);
+			});
+	}
+
+	function requestNotificationPermission() {
+		// Mostrar un modal bonito para solicitar permisos
+		const modal = document.createElement('div');
+		modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+		modal.innerHTML = `
+			<div class="bg-white rounded-sketch p-8 max-w-md mx-4 shadow-sketch border-4 border-purple-300">
+				<div class="text-center">
+					<div class="text-4xl mb-4">🔔</div>
+					<h3 class="text-xl font-bold mb-4 text-gray-800">¡Notificaciones Especiales!</h3>
+					<p class="text-gray-600 mb-6">
+						¿Te gustaría recibir recordatorios en tu móvil para fechas importantes como tu cumpleaños y aniversario?
+					</p>
+					<div class="flex gap-4 justify-center">
+						<button id="allowNotifications" class="px-6 py-3 bg-purple-500 text-white rounded-sketch hover:bg-purple-600 btn-sketch font-bold">
+							✨ ¡Sí, quiero!
+						</button>
+						<button id="denyNotifications" class="px-6 py-3 bg-gray-400 text-white rounded-sketch hover:bg-gray-500 btn-sketch">
+							No gracias
+						</button>
+					</div>
+				</div>
+			</div>
+		`;
+		
+		document.body.appendChild(modal);
+		
+		document.getElementById('allowNotifications').onclick = function() {
+			Notification.requestPermission().then(function(permission) {
+				if (permission === 'granted') {
+					showSuccessMessage();
+				}
+				modal.remove();
+			});
+		};
+		
+		document.getElementById('denyNotifications').onclick = function() {
+			modal.remove();
+		};
+	}
+
+	function showSuccessMessage() {
+		const success = document.createElement('div');
+		success.className = 'fixed top-4 right-4 bg-green-500 text-white p-4 rounded-sketch shadow-sketch z-50 animate-bounce';
+		success.innerHTML = `
+			<div class="flex items-center gap-2">
+				<span>🎉</span>
+				<span class="font-bold">¡Notificaciones activadas!</span>
+			</div>
+		`;
+		document.body.appendChild(success);
+		
+		setTimeout(() => success.remove(), 4000);
+	}
+
+	function checkSpecialDates() {
+		const today = new Date();
+		const todayMonth = today.getMonth();
+		const todayDay = today.getDate();
+		
+		// Verificar si hoy es una fecha especial
+		if ((todayMonth === 0 && todayDay === 20) || (todayMonth === 8 && todayDay === 2)) {
+			if (Notification.permission === 'granted') {
+				triggerSpecialDayNotification(todayMonth, todayDay);
+			}
+		}
+	}
+
+	function triggerSpecialDayNotification(month, day) {
+		let title, body;
+		
+		if (month === 0 && day === 20) {
+			title = '🎂 ¡Feliz Cumpleaños, Naiara! 🎉';
+			body = '¡Hoy es tu día especial! Que tengas un cumpleaños maravilloso.';
+		} else if (month === 8 && day === 2) {
+			title = '💕 ¡Feliz Aniversario! ❤️';
+			body = '¡Hoy celebramos vuestro aniversario! Un día muy especial.';
+		}
+		
+		new Notification(title, {
+			body: body,
+			icon: '/favicon.svg',
+			vibrate: [100, 50, 100]
+		});
+	}
+
+	function scheduleDailyChecks() {
+		// Verificar cada día a las 9:00 AM
+		const now = new Date();
+		const nineMorning = new Date();
+		nineMorning.setHours(9, 0, 0, 0);
+		
+		// Si ya pasaron las 9, programar para mañana
+		if (now > nineMorning) {
+			nineMorning.setDate(nineMorning.getDate() + 1);
+		}
+		
+		const timeUntilNine = nineMorning.getTime() - now.getTime();
+		
+		setTimeout(() => {
+			checkSpecialDates();
+			// Repetir cada 24 horas
+			setInterval(checkSpecialDates, 24 * 60 * 60 * 1000);
+		}, timeUntilNine);
+	}
+</script>
