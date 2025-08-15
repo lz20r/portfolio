@@ -15,44 +15,44 @@ const featured = projects.find((p) => p.featured);
 	<main class='mx-auto max-w-6xl px-4'>
 		<!-- Hero Section -->
 		<section class='py-20 md:py-32 text-center'>
-			<div class="relative">
+			<div class="relative sketch-in">
 				<!-- Avatar/Imagen de perfil -->
-				<div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-600 p-1">
-					<div class="w-full h-full bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-						<span class="text-4xl font-bold">N</span>
+				<div class="w-32 h-32 mx-auto mb-8 rounded-sketch bg-gradient-to-br from-blue-200 to-purple-300 p-2 border-4 border-blue-400 shadow-sketch card-sketch">
+					<div class="w-full h-full bg-white/50 rounded-sketch flex items-center justify-center backdrop-blur-sm">
+						<span class="text-4xl font-bold text-blue-600">🎨</span>
 					</div>
 				</div>
 				
-				<h1 class='text-5xl md:text-7xl font-bold mb-6'>
-					<span class="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-						Hola, soy Nia
+				<h1 class='text-5xl md:text-7xl font-bold mb-6 font-handwriting'>
+					<span class="text-blue-600 sketch-text doodle-line">
+						¡Hola, soy Nia! 👋
 					</span>
 				</h1>
 				
-				<p class='text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed'>
-					Desarrolladora web apasionada por crear experiencias digitales increíbles. 
-					Especializada en tecnologías modernas y diseño centrado en el usuario.
+				<p class='text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed font-sketch'>
+					🎯 Desarrolladora web que convierte ☕ café en código y 💡 ideas en realidad digital. 
+					¡Bienvenid@ a mi mundo creativo! ✨
 				</p>
 				
 				<!-- CTA Buttons -->
 				<div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
 					<a href="#projects" 
-						class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg hover:shadow-xl">
-						Ver mis proyectos
+						class="px-8 py-4 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-sketch font-bold hover:from-blue-500 hover:to-purple-600 transition-all btn-sketch shadow-sketch-colored">
+						📁 Ver mis creaciones
 					</a>
 					<a href="#contact" 
-						class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full font-semibold hover:bg-white/20 transition-colors">
-						Contáctame
+						class="px-8 py-4 bg-white/80 backdrop-blur-sm border-2 border-green-300 rounded-sketch font-bold hover:bg-green-100 hover:border-green-400 transition-colors btn-sketch text-gray-700">
+						💬 ¡Charlemos!
 					</a>
 				</div>
 				
 				<!-- Tecnologías -->
-				<div class="flex flex-wrap justify-center gap-4 text-sm">
-					<span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">React</span>
-					<span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">TypeScript</span>
-					<span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">Astro</span>
-					<span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">Tailwind CSS</span>
-					<span class="px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">Node.js</span>
+				<div class="flex flex-wrap justify-center gap-3 text-sm">
+					<span class="px-4 py-2 bg-blue-100 border-2 border-blue-300 rounded-sketch btn-sketch marker-highlight">⚛️ React</span>
+					<span class="px-4 py-2 bg-purple-100 border-2 border-purple-300 rounded-sketch btn-sketch">📝 TypeScript</span>
+					<span class="px-4 py-2 bg-pink-100 border-2 border-pink-300 rounded-sketch btn-sketch">🚀 Astro</span>
+					<span class="px-4 py-2 bg-green-100 border-2 border-green-300 rounded-sketch btn-sketch">🎨 Tailwind</span>
+					<span class="px-4 py-2 bg-yellow-100 border-2 border-yellow-300 rounded-sketch btn-sketch">📦 Node.js</span>
 				</div>
 			</div>
 		</section>
@@ -60,18 +60,16 @@ const featured = projects.find((p) => p.featured);
 		<!-- Proyecto Destacado -->
 		{featured && (
 			<section class='py-16'>
-				<div class='bg-gradient-to-r from-blue-500/10 to-purple-500/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 md:p-12'>
+				<div class='bg-yellow-50/80 border-4 border-yellow-400 rounded-sketch-lg p-8 md:p-12 card-sketch shadow-sketch-lg'>
 					<div class="flex items-center gap-3 mb-6">
-						<svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-							<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-						</svg>
-						<span class='text-lg font-medium text-yellow-400'>Proyecto destacado</span>
+						<span class="text-3xl">⭐</span>
+						<span class='text-lg font-bold text-yellow-700 font-handwriting'>¡Mi obra maestra!</span>
 					</div>
 					
-					<h2 class='text-3xl md:text-4xl font-bold mb-4'>{featured.title}</h2>
+					<h2 class='text-3xl md:text-4xl font-bold mb-4 text-gray-800 sketch-text font-handwriting'>{featured.title}</h2>
 					
 					{featured.description && (
-						<p class='text-lg text-gray-300 mb-6 leading-relaxed'>
+						<p class='text-lg text-gray-600 mb-6 leading-relaxed'>
 							{featured.description}
 						</p>
 					)}
@@ -79,8 +77,8 @@ const featured = projects.find((p) => p.featured);
 					{featured.tags && (
 						<div class='flex flex-wrap gap-2 mb-6'>
 							{featured.tags.map((tag) => (
-								<span class='px-3 py-1 text-sm bg-white/10 backdrop-blur-sm border border-white/20 rounded-full'>
-									{tag}
+								<span class='px-3 py-1 text-sm bg-white/80 border-2 border-blue-300 rounded-sketch text-blue-700 btn-sketch font-medium'>
+									🏷️ {tag}
 								</span>
 							))}
 						</div>
@@ -89,24 +87,18 @@ const featured = projects.find((p) => p.featured);
 					<div class='flex flex-wrap gap-4'>
 						{featured.url && (
 							<a
-								class='inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-full hover:bg-gray-100 transition-colors'
+								class='inline-flex items-center gap-2 px-6 py-3 bg-blue-500 text-white font-bold rounded-sketch hover:bg-blue-600 transition-colors btn-sketch shadow-sketch'
 								href={featured.url}
 								target='_blank'>
-								<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-								</svg>
-								Ver Demo
+								🌐 Ver en vivo
 							</a>
 						)}
 						{featured.github && (
 							<a
-								class='inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-colors'
+								class='inline-flex items-center gap-2 px-6 py-3 bg-white/80 border-2 border-gray-400 rounded-sketch hover:bg-gray-100 hover:border-gray-500 transition-colors btn-sketch text-gray-700 font-bold'
 								href={featured.github}
 								target='_blank'>
-								<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-									<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-								</svg>
-								Ver Código
+								💻 Ver código
 							</a>
 						)}
 					</div>
@@ -117,12 +109,12 @@ const featured = projects.find((p) => p.featured);
 		<!-- Sección de Proyectos -->
 		<section id='projects' class='py-20'>
 			<div class="text-center mb-12">
-				<h3 class='text-3xl md:text-4xl font-bold mb-4'>
-					<span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-						Mis Proyectos
+				<h3 class='text-3xl md:text-4xl font-bold mb-4 font-handwriting'>
+					<span class="text-blue-600 sketch-text doodle-line">
+						🚀 Mi portafolio de proyectos
 					</span>
 				</h3>
-				<p class="text-lg text-gray-300">Una selección de mis trabajos más recientes</p>
+				<p class="text-lg text-gray-600">Una colección de mis aventuras digitales 🎨</p>
 			</div>
 			
 			<div class='grid gap-8 md:grid-cols-2 lg:grid-cols-2'>
@@ -133,56 +125,57 @@ const featured = projects.find((p) => p.featured);
 		<!-- Sección Sobre mí -->
 		<section id='about' class='py-20'>
 			<div class="grid md:grid-cols-2 gap-12 items-center">
-				<div>
-					<h3 class='text-3xl md:text-4xl font-bold mb-6'>
-						<span class="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-							Sobre mí
-						</span>
-					</h3>
-					<div class="space-y-4 text-lg text-gray-300 leading-relaxed">
-						<p>
-							Soy una desarrolladora web apasionada con experiencia en crear aplicaciones modernas y eficientes. 
-							Me especializo en tecnologías frontend como React, TypeScript y Tailwind CSS.
-						</p>
-						<p>
-							Siempre estoy aprendiendo nuevas tecnologías y mejorando mis habilidades. 
-							Me encanta resolver problemas complejos y crear experiencias de usuario excepcionales.
-						</p>
-						<p>
-							Cuando no estoy programando, disfruto explorando nuevas herramientas de desarrollo, 
-							leyendo sobre las últimas tendencias en tecnología y contribuyendo a proyectos de código abierto.
-						</p>
-					</div>
-					
-					<!-- Habilidades -->
-					<div class="mt-8">
-						<h4 class="text-xl font-semibold mb-4">Habilidades principales</h4>
-						<div class="grid grid-cols-2 gap-4">
-							<div class="space-y-2">
+				<div class="card-sketch">
+					<div class="bg-white/80 border-4 border-purple-300 rounded-sketch-lg p-8 shadow-sketch">
+						<h3 class='text-3xl md:text-4xl font-bold mb-6 font-handwriting'>
+							<span class="text-purple-600 sketch-text">
+								👋 ¡Hola! Soy yo
+							</span>
+						</h3>
+						<div class="space-y-4 text-lg text-gray-600 leading-relaxed">
+							<p>
+								🌟 Soy una desarrolladora web que cree que el código puede ser arte y el arte puede ser código. 
+								Mi misión: transformar ☕ café en aplicaciones increíbles.
+							</p>
+							<p>
+								📚 Siempre estoy aprendiendo algo nuevo porque la tecnología nunca duerme 
+								(¡y yo tampoco cuando hay un bug interesante que resolver! 🐛).
+							</p>
+							<p>
+								🎯 Mi superpoder: convertir ideas locas en realidades digitales funcionales. 
+								¿Tu proyecto imposible? ¡Para mí es solo otro martes emocionante! 
+							</p>
+						</div>
+						
+						<!-- Habilidades con barras sketch -->
+						<div class="mt-8">
+							<h4 class="text-xl font-bold mb-4 text-gray-700 font-handwriting">🛠️ Mi caja de herramientas</h4>
+							<div class="space-y-4">
 								<div>
-									<span class="text-sm text-gray-400">Frontend</span>
-									<div class="w-full bg-white/10 rounded-full h-2">
-										<div class="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full w-5/6"></div>
+									<div class="flex justify-between items-center mb-2">
+										<span class="text-sm font-medium text-gray-600">🎨 Frontend Magic</span>
+										<span class="text-sm text-gray-500">90% ⭐</span>
+									</div>
+									<div class="w-full bg-gray-200 rounded-sketch h-3 border-2 border-blue-300">
+										<div class="bg-gradient-to-r from-blue-400 to-blue-600 h-full rounded-sketch border border-blue-500" style="width: 90%"></div>
 									</div>
 								</div>
 								<div>
-									<span class="text-sm text-gray-400">Backend</span>
-									<div class="w-full bg-white/10 rounded-full h-2">
-										<div class="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full w-3/4"></div>
+									<div class="flex justify-between items-center mb-2">
+										<span class="text-sm font-medium text-gray-600">⚙️ Backend Wizardry</span>
+										<span class="text-sm text-gray-500">75% ⭐</span>
 									</div>
-								</div>
-							</div>
-							<div class="space-y-2">
-								<div>
-									<span class="text-sm text-gray-400">UI/UX</span>
-									<div class="w-full bg-white/10 rounded-full h-2">
-										<div class="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full w-4/5"></div>
+									<div class="w-full bg-gray-200 rounded-sketch h-3 border-2 border-purple-300">
+										<div class="bg-gradient-to-r from-purple-400 to-purple-600 h-full rounded-sketch border border-purple-500" style="width: 75%"></div>
 									</div>
 								</div>
 								<div>
-									<span class="text-sm text-gray-400">DevOps</span>
-									<div class="w-full bg-white/10 rounded-full h-2">
-										<div class="bg-gradient-to-r from-blue-400 to-purple-400 h-2 rounded-full w-2/3"></div>
+									<div class="flex justify-between items-center mb-2">
+										<span class="text-sm font-medium text-gray-600">🎭 UI/UX Artistry</span>
+										<span class="text-sm text-gray-500">85% ⭐</span>
+									</div>
+									<div class="w-full bg-gray-200 rounded-sketch h-3 border-2 border-pink-300">
+										<div class="bg-gradient-to-r from-pink-400 to-pink-600 h-full rounded-sketch border border-pink-500" style="width: 85%"></div>
 									</div>
 								</div>
 							</div>
@@ -191,11 +184,18 @@ const featured = projects.find((p) => p.featured);
 				</div>
 				
 				<div class="relative">
-					<div class="aspect-square bg-gradient-to-br from-blue-400/20 to-purple-600/20 backdrop-blur-sm border border-white/20 rounded-3xl p-8 flex items-center justify-center">
+					<div class="bg-gradient-to-br from-green-100 to-blue-100 border-4 border-green-400 rounded-sketch-lg p-8 flex items-center justify-center card-sketch shadow-sketch-lg min-h-[400px]">
 						<div class="text-center">
-							<div class="text-6xl mb-4">💻</div>
-							<p class="text-lg font-medium">Creando el futuro</p>
-							<p class="text-sm text-gray-400">una línea de código a la vez</p>
+							<div class="text-8xl mb-6">👩‍💻</div>
+							<p class="text-2xl font-bold text-gray-700 font-handwriting mb-2">¡Creando magia digital!</p>
+							<p class="text-lg text-gray-600">Una línea de código a la vez ✨</p>
+							
+							<!-- Elementos decorativos -->
+							<div class="mt-6 flex justify-center space-x-4">
+								<span class="text-3xl animate-bounce">🚀</span>
+								<span class="text-3xl animate-bounce-slow">💡</span>
+								<span class="text-3xl animate-bounce">🎨</span>
+							</div>
 						</div>
 					</div>
 				</div>
