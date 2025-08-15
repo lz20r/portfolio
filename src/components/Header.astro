@@ -2,27 +2,71 @@
 
 ---
 
-<nav class='mx-auto max-w-6xl px-4 py-6 flex items-center justify-between'>
-	<a
-		href='/'
-		class='font-semibold tracking-wide'
-		>Nia · Portfolio</a
-	>
-	<div class='flex gap-4 text-sm'>
+<header class="sticky top-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20">
+	<nav class='mx-auto max-w-6xl px-4 py-4 flex items-center justify-between'>
 		<a
-			class='hover:opacity-80'
-			href='/#projects'
-			>Proyectos</a
+			href='/'
+			class='text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent hover:scale-105 transition-transform'
+			>Nia · Portfolio</a
 		>
-		<a
-			class='hover:opacity-80'
-			href='/#about'
-			>Sobre mí</a
+		<div class='hidden md:flex items-center gap-8 text-sm font-medium'>
+			<a
+				class='relative px-3 py-2 rounded-lg hover:bg-white/10 transition-all group'
+				href='/#projects'
+			>
+				Proyectos
+				<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all"></span>
+			</a>
+			<a
+				class='relative px-3 py-2 rounded-lg hover:bg-white/10 transition-all group'
+				href='/#about'
+			>
+				Sobre mí
+				<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all"></span>
+			</a>
+			<a
+				class='relative px-3 py-2 rounded-lg hover:bg-white/10 transition-all group'
+				href='/#contact'
+			>
+				Contacto
+				<span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all"></span>
+			</a>
+			<a
+				class='px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition-transform shadow-lg'
+				href='/register'
+			>
+				Registrarse
+			</a>
+		</div>
+		
+		<!-- Menú móvil -->
+		<button 
+			class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+			id="mobile-menu-button"
+			aria-label="Abrir menú"
 		>
-		<a
-			class='hover:opacity-80'
-			href='/#contact'
-			>Contacto</a
-		>
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+			</svg>
+		</button>
+	</nav>
+	
+	<!-- Menú móvil desplegable -->
+	<div class="md:hidden hidden bg-white/10 backdrop-blur-md border-t border-white/20" id="mobile-menu">
+		<div class="px-4 py-2 space-y-1">
+			<a href="/#projects" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition-colors">Proyectos</a>
+			<a href="/#about" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition-colors">Sobre mí</a>
+			<a href="/#contact" class="block px-3 py-2 rounded-lg hover:bg-white/10 transition-colors">Contacto</a>
+			<a href="/register" class="block px-3 py-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg font-semibold text-center mt-2">Registrarse</a>
+		</div>
 	</div>
-</nav>
+</header>
+
+<script>
+	const menuButton = document.getElementById('mobile-menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+	
+	menuButton?.addEventListener('click', () => {
+		mobileMenu?.classList.toggle('hidden');
+	});
+</script>
