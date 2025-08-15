@@ -5,6 +5,44 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
 
 const featured = projects.find((p) => p.featured);
+
+// Fechas importantes - puedes cambiar estas fechas
+const importantDates = [
+  {
+    name: "Mi Cumpleaños 🎂",
+    date: new Date(new Date().getFullYear(), 0, 20), // 20 de enero
+    emoji: "🎉",
+    color: "from-pink-400 to-purple-500"
+  },
+  {
+    name: "Nuestro Aniversario 💕",
+    date: new Date(new Date().getFullYear(), 8, 2), // 2 de septiembre
+    emoji: "❤️",
+    color: "from-red-400 to-pink-500"
+  }
+];
+
+// Función para calcular días restantes
+function getDaysUntil(targetDate: Date) {
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  
+  // Ajustar el año si la fecha ya pasó este año
+  let nextDate = new Date(targetDate);
+  nextDate.setFullYear(currentYear);
+  
+  if (nextDate < today) {
+    nextDate.setFullYear(currentYear + 1);
+  }
+  
+  const timeDiff = nextDate.getTime() - today.getTime();
+  const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+  
+  return {
+    days: daysDiff,
+    nextDate: nextDate
+  };
+}
 ---
 
 <Base
@@ -30,8 +68,8 @@ const featured = projects.find((p) => p.featured);
 				</h1>
 				
 				<p class='text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed font-sketch'>
-					🎯 Desarrolladora web que convierte ☕ café en código y 💡 ideas en realidad digital. 
-					¡Bienvenid@ a mi mundo creativo! ✨
+					� Graduada en DAM/DAW y estudiante de Arte Digital. 
+					Creadora de Cinammon.net - fusiono programación con creatividad. ✨
 				</p>
 				
 				<!-- CTA Buttons -->
@@ -199,6 +237,71 @@ const featured = projects.find((p) => p.featured);
 						</div>
 					</div>
 				</div>
+			</div>
+		</section>
+
+		<!-- Sección de Cuenta Atrás -->
+		<section class='py-20'>
+			<div class="text-center mb-12">
+				<h3 class='text-3xl md:text-4xl font-bold mb-4 font-handwriting'>
+					<span class="text-purple-600 sketch-text doodle-line">
+						⏰ Fechas Especiales
+					</span>
+				</h3>
+				<p class="text-lg text-gray-600">¡Días importantes que se acercan! 🗓️</p>
+			</div>
+			
+			<div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+				{importantDates.map((event) => {
+					const countdown = getDaysUntil(event.date);
+					return (
+						<div class="card-sketch">
+							<div class={`bg-gradient-to-br ${event.color} p-6 rounded-sketch-lg shadow-sketch text-white relative overflow-hidden`}>
+								<!-- Decoración de fondo -->
+								<div class="absolute top-0 right-0 text-6xl opacity-20 transform rotate-12">
+									{event.emoji}
+								</div>
+								
+								<div class="relative z-10">
+									<h4 class="text-xl font-bold mb-2 font-handwriting">{event.name}</h4>
+									<div class="text-center">
+										<div class="text-4xl font-bold mb-2 sketch-text">
+											{countdown.days}
+										</div>
+										<div class="text-sm opacity-90">
+											{countdown.days === 1 ? 'día restante' : 'días restantes'}
+										</div>
+										<div class="text-xs opacity-75 mt-2">
+											{countdown.nextDate.toLocaleDateString('es-ES', { 
+												weekday: 'long', 
+												year: 'numeric', 
+												month: 'long', 
+												day: 'numeric' 
+											})}
+										</div>
+									</div>
+								</div>
+								
+								<!-- Barra de progreso animada -->
+								<div class="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+									<div 
+										class="h-full bg-white/40 rounded-r transition-all duration-1000 animate-pulse"
+										style={`width: ${Math.max(5, 100 - (countdown.days * 2))}%`}
+									></div>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+			
+			<!-- Mensaje especial si alguna fecha es hoy -->
+			<div class="text-center mt-8">
+				{importantDates.some(event => getDaysUntil(event.date).days === 0) && (
+					<div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white p-4 rounded-sketch shadow-sketch max-w-md mx-auto animate-bounce">
+						<div class="font-bold text-lg">🎉 ¡HOY ES UN DÍA ESPECIAL! 🎉</div>
+					</div>
+				)}
 			</div>
 		</section>
 
